@@ -1,0 +1,7 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <color name="app_bg">#ECECED</color>
+    <color name="nav_bg">#FF0000</color>
+    <color name="nav_selected">#FF0000</color>
+
+</resources>
