@@ -46,6 +46,12 @@ public class MainActivity extends Activity {
                 .setTabListener(new TabListener<SearchFragment>(
                         this, "search", SearchFragment.class));
         actionBar.addTab(tab);
+        
+        tab = actionBar.newTab()
+                .setText("SingleView")
+                .setTabListener(new TabListener<IdeaView>(
+                        this, "search", IdeaView.class));
+        actionBar.addTab(tab);
     }
 
     @Override

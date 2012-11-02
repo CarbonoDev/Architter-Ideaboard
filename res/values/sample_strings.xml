@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="home_categories">Category placeholder</string>
-    
+    <string name="idea_description">I\'m not making a \"house\" this time. It should be a cool terrain.</string>    
+    <string name="idea_tags">#Architecture #Design #Interior design</string>    
 </resources>
