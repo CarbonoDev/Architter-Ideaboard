@@ -2,18 +2,17 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    
+    android:layout_height="wrap_content" >
 
     <LinearLayout
+        android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-        
+
         <RelativeLayout
-            style="@style/TopContainer"
-            android:layout_below="@+id/scrollView1"
-            android:layout_centerHorizontal="true" >
+            android:id="@+id/RelativeLayout2"
+            style="@style/TopContainer" >
 
             <ImageButton
                 android:id="@+id/imageButton1"
@@ -23,7 +22,6 @@
                 android:layout_marginRight="11.5dp"
                 android:src="@drawable/save_btn" />
 
-
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
@@ -32,9 +30,47 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="12dp"
                 android:text="@android:string/cancel" />
-
         </RelativeLayout>
 
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout3"
+            style="@style/Container"
+            android:layout_height="83dp"
+            android:layout_marginTop="11dp" >
+
+
+            <ImageView
+                android:id="@+id/imageView1"
+                style="@style/BorderedImage"
+                android:layout_width="92dp"
+                android:layout_height="60.5dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="11dp"
+                android:src="@drawable/prueba" />
+
+
+
+            <ImageView
+                android:id="@+id/ImageView02"
+                style="@style/ButtonSeparator"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@id/imageView1"
+                android:src="@drawable/button_separator" />
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/imageView1"
+                android:ems="10"
+                android:hint="@string/description_hint"
+                android:inputType="textMultiLine" />
+
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>
