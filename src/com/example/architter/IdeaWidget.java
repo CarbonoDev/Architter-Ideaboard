@@ -18,8 +18,8 @@ import android.widget.TextView;
 
 public class IdeaWidget extends LinearLayout {
 	
-	private TextView description;
 	private ImageView image;
+	private TextView description;
 	private ImageButton archthis;
 	
 	public IdeaWidget(Context context, AttributeSet attrs) {
