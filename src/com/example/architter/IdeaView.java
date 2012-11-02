@@ -22,6 +22,6 @@ public class IdeaView extends Fragment {
 			Bundle savedInstanceState) {
 	    Context darkTheme = new ContextThemeWrapper(getActivity(), R.style.AppTheme);
 	    inflater = (LayoutInflater) darkTheme.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		return inflater.inflate(R.layout.idea_view, container, false);
+		return inflater.inflate(R.layout.arch_this, container, false);
 	}
 }

@@ -42,6 +42,13 @@
         <item name="android:fontFamily">"Trebuchet MS"</item>
         <item name="android:textSize">12sp</item>
     </style>
+    
+
+    <style name="actionText">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">#919191</item>
+    </style>
+    
     <style name="IdeaDescriptionText" parent="ArchiText">
         <item name="android:layout_width">305dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -53,15 +60,21 @@
         <item name="android:textColor">#0067BF</item>
     </style>
     
+    <style name="Container" >
+        <item name="android:layout_width" >335.00dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:paddingLeft" >0.5dp</item>
+        <item name="android:paddingRight" >0.5dp</item>
+        <item name="android:paddingBottom" >0.5dp</item>
+        <item name="android:background">@drawable/container_bg</item>
+    </style>
 
-    <style name="InfoContainer">
-            	<item name="android:background">@drawable/info_container_bg</item>
-                <item name="android:layout_width" >335.00dp</item>
+    <style name="TopContainer" parent="@style/Container" >
+        <item name="android:layout_height" >45.0dp</item>
+    </style>
+    
+    <style name="InfoContainer" parent="@style/Container">
                 <item name="android:layout_height" >fill_parent</item>
-                <item name="android:layout_marginLeft" >12.5dp</item>
-                <item name="android:paddingLeft" >0.5dp</item>
-                <item name="android:paddingRight" >0.5dp</item>
-                <item name="android:paddingBottom" >0.5dp</item>
                 <item name="android:orientation" >vertical</item>
     </style>
     
