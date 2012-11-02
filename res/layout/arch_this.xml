@@ -49,15 +49,13 @@
                 android:layout_marginRight="13dp"
                 android:layout_marginTop="11dp"
                 android:src="@drawable/prueba" />
-
-
-
+
             <ImageView
                 android:id="@+id/ImageView02"
                 style="@style/ButtonSeparator"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@id/imageView1"
+                android:layout_toRightOf="@id/imageView1"
                 android:src="@drawable/button_separator" />
 
             <EditText
