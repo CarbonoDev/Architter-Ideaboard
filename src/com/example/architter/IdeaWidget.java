@@ -3,15 +3,13 @@ package com.example.architter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 
-import android.app.Activity;
+import com.androidhive.imagefromurl.ImageLoader;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageButton;
@@ -46,41 +44,23 @@ public class IdeaWidget extends LinearLayout {
 		description.setText(text);
 	}
 	
-	public void setImage(String imageUrl) {	
-		//image.setImageURI(Uri.parse(Uri.encode(imageUrl)));
-		//image.setImageDrawable(R.drawable.prueba);
-		/**/
-		try {
-			  InputStream is = (InputStream) new URL(imageUrl).getContent();
-			  Bitmap bitmap = BitmapFactory.decodeStream(is);
-			  image.setImageBitmap(bitmap);
-			} catch (MalformedURLException e) {
-			  e.printStackTrace();
-			} catch (IOException e) {
-			  e.printStackTrace();
-			}
-		/**/
+	public void setImage(String imageUrl) {
+        
+        // Loader image - will be shown before loading image
+        int loader = R.drawable.big_logo;        
+        
+        // ImageLoader class instance
+        ImageLoader imgLoader = new ImageLoader(getContext());
+        
+        // whenever you want to load an image from url
+        // call DisplayImage function
+        // url - image url to load
+        // loader - loader image, will be displayed before getting image
+        // image - ImageView 
+        imgLoader.DisplayImage(imageUrl, loader, image);
 	}
 	
 	public void setArchthis(ImageButton imgb) {
 		archthis = imgb;
 	}
-	
-	public static Bitmap getBitmapFromURL(String src) {
-        try {
-            Log.e("src",src);
-            URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            Log.e("Bitmap","returned");
-            return myBitmap;
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.e("Exception",e.getMessage());
-            return null;
-        }
-    }
 }

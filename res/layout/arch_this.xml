@@ -31,20 +31,19 @@
                 android:layout_marginLeft="12dp"
                 android:text="@android:string/cancel" />
         </RelativeLayout>
-
-
+
         <RelativeLayout
             android:id="@+id/RelativeLayout3"
             style="@style/Container"
-            android:layout_height="83dp"
+            android:layout_height="fill_parent"
             android:layout_marginTop="11dp" >
-
-
+
             <ImageView
                 android:id="@+id/imageView1"
                 style="@style/BorderedImage"
                 android:layout_width="92dp"
                 android:layout_height="60.5dp"
+                android:layout_marginBottom="11dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginRight="13dp"
                 android:layout_marginTop="11dp"
@@ -57,13 +56,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@id/imageView1"
                 android:src="@drawable/button_separator" />
-
+
             <EditText
                 android:id="@+id/editText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentRight="false"
                 android:layout_alignTop="@+id/imageView1"
+                android:layout_toRightOf="@id/ImageView02"
                 android:ems="10"
                 android:hint="@string/description_hint"
                 android:inputType="textMultiLine" />
