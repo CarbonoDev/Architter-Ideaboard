@@ -35,10 +35,10 @@ public class HomeFragment extends Fragment {
 		tx = new TextView(getActivity());
 		tx.setText("hola2");
 		column2.addView(tx);
-		IdeaWidget idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, column1);
-//		idea.setDescription("descri");
-//		idea.setImage("http://ycombinator.com/images/yc500.gif");
-//		column1.addView(idea);
+		IdeaWidget idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, column1, false);
+		idea.setDescription("No jala la imagen :(");
+		idea.setImage("http://gutocarvalho.net/wordpress/wp-content/uploads/2009/02/tux.png");
+		column1.addView(idea);
 		return homeView;
 	}
 }

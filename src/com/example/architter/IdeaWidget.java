@@ -3,12 +3,15 @@ package com.example.architter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageButton;
@@ -29,7 +32,7 @@ public class IdeaWidget extends LinearLayout {
 	@Override
 	protected void onFinishInflate() {
 		super.onFinishInflate();
-		((Activity)getContext()).getLayoutInflater().inflate(R.layout.idea_component, this);
+		//((Activity)getContext()).getLayoutInflater().inflate(R.layout.idea_component, this);
 		setupViewItems();
 	}
 	
@@ -43,9 +46,20 @@ public class IdeaWidget extends LinearLayout {
 		description.setText(text);
 	}
 	
-	public void setImage(String url) {
-		Bitmap bitImage = getBitmapFromURL(url);
-		image.setImageBitmap(bitImage);
+	public void setImage(String imageUrl) {	
+		//image.setImageURI(Uri.parse(Uri.encode(imageUrl)));
+		//image.setImageDrawable(R.drawable.prueba);
+		/**/
+		try {
+			  InputStream is = (InputStream) new URL(imageUrl).getContent();
+			  Bitmap bitmap = BitmapFactory.decodeStream(is);
+			  image.setImageBitmap(bitmap);
+			} catch (MalformedURLException e) {
+			  e.printStackTrace();
+			} catch (IOException e) {
+			  e.printStackTrace();
+			}
+		/**/
 	}
 	
 	public void setArchthis(ImageButton imgb) {
