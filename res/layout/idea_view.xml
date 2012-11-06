@@ -6,8 +6,7 @@
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        
+        android:layout_height="wrap_content" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,16 +19,15 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/prueba" />
 
-
             <LinearLayout
                 android:id="@+id/viewOptions1"
-                style="@style/InfoContainer" >
+                style="@style/InfoContainer"
+                android:orientation="vertical" >
 
                 <RelativeLayout
                     style="@style/ButtonsBackground"
                     android:layout_width="fill_parent"
                     android:layout_height="43.5dp" >
-
 
                     <ImageButton
                         android:id="@+id/ImageButton3"
@@ -49,12 +47,10 @@
                     <ImageButton
                         android:id="@+id/imageButton1"
                         style="@style/ImageButton"
-                        android:layout_marginLeft="8dp"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
                         android:src="@drawable/delete_btn" />
-
-
 
                     <ImageButton
                         android:id="@+id/imageButton2"
@@ -62,9 +58,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/arch_btn_selected" />
-
                 </RelativeLayout>
-
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
@@ -73,27 +67,26 @@
                     <TextView
                         android:id="@+id/idea_description"
                         style="@style/IdeaDescriptionText"
-                        android:text="@string/idea_description"/>
+                        android:text="@string/idea_description" />
 
                     <TextView
                         android:id="@+id/idea_description_tags"
                         style="@style/IdeaDescriptionTags"
                         android:layout_below="@+id/idea_description"
                         android:text="@string/idea_tags" />
-
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="46.5dp" >
-
+
                     <ImageView
                         android:id="@+id/ImageView01"
                         style="@style/SectionSeparator"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
                         android:src="@drawable/button_separator" />
-
+
                     <ImageView
                         android:id="@+id/ImageView02"
                         style="@style/ButtonSeparator"
@@ -102,7 +95,7 @@
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@+id/ImageButton01"
                         android:src="@drawable/button_separator" />
-
+
                     <ImageButton
                         android:id="@+id/ImageButton01"
                         style="@style/ImageButton"
@@ -121,7 +114,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="16dp"
                         android:src="@drawable/profile_pic" />
-
+
                     <TextView
                         android:id="@+id/textView1"
                         style="@style/ArchiText"
@@ -130,8 +123,8 @@
                         android:layout_alignTop="@+id/imageButton4"
                         android:layout_marginLeft="6dp"
                         android:layout_toRightOf="@+id/imageButton4"
-                        android:textColor="#acacb4"
-                        android:text="Via:" />
+                        android:text="Via:"
+                        android:textColor="#acacb4" />
 
                     <TextView
                         android:id="@+id/idea_username"
@@ -142,13 +135,9 @@
                         android:layout_below="@+id/textView1"
                         android:text="Username"
                         android:textColor="#636370" />
-
                 </RelativeLayout>
-
             </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
 
 </RelativeLayout>

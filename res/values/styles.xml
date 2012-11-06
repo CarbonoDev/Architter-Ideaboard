@@ -75,6 +75,11 @@
         <item name="android:paddingBottom" >0.5dp</item>
         <item name="android:background">@drawable/container_bg</item>
     </style>
+    
+    <style name="IdeaWidget" parent="@style/Container">
+        <item name="android:layout_width" >168dp</item>
+        <item name="android:background">@drawable/container_bg_br</item>
+    </style>
 
     <style name="TopContainer" parent="@style/Container" >
         <item name="android:layout_height" >45.0dp</item>

@@ -4,15 +4,11 @@
 package com.example.architter;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * @author Marco
@@ -23,22 +19,31 @@ public class HomeFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-	    /*Context darkTheme = new ContextThemeWrapper(getActivity(), R.style.AppTheme);
-	    inflater = (LayoutInflater) darkTheme.getSystemService(Context.LAYOUT_INFLATER_SERVICE);*/
 		View homeView = inflater.inflate(R.layout.home_fragment, container, false);
 		getActivity().setContentView(R.layout.home_fragment);
 		LinearLayout column1 = (LinearLayout) getActivity().findViewById(R.id.linear2);
 		LinearLayout column2 = (LinearLayout) getActivity().findViewById(R.id.linear3);
-		TextView tx = new TextView(getActivity());
-		tx.setText("hola1");
-		column1.addView(tx);
-		tx = new TextView(getActivity());
-		tx.setText("hola2");
-		column2.addView(tx);
-		IdeaWidget idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, column1, false);
-		idea.setDescription("Ya jala la imagen :)");
-		idea.setImage("http://paste.20d.mx/img/20d.png");
-		column1.addView(idea);
+		IdeaWidget idea;
+		for(int i = 0; i < 200; i++){
+			idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, column1, false);
+			idea.setDescription("Ya jala la imagen :)");
+			if(i % 2 == 0) {
+				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___J_7.jpg");
+			} else {
+				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___K_2.jpg");			
+			}
+			column1.addView(idea);
+		}
+		for(int i = 0; i < 200; i++){
+			idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, column1, false);
+			idea.setDescription("Ya jala la imagen :)");
+			if(i % 2 == 0) {
+				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___C_2.jpg");
+			} else {
+				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___M_2.jpg");
+			}
+			column2.addView(idea);
+		}
 		return homeView;
 	}
 }
