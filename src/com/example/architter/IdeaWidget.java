@@ -8,7 +8,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 public class IdeaWidget extends LinearLayout {
 	
 	private ImageView image;
@@ -36,6 +35,10 @@ public class IdeaWidget extends LinearLayout {
 		description.setText(text);
 	}
 	
+	public String getDescription() {
+		return (String) description.getText();
+	}
+	
 	public void setImage(String imageUrl) {
         
         // Loader image - will be shown before loading image
@@ -54,5 +57,9 @@ public class IdeaWidget extends LinearLayout {
 	
 	public void setArchthis(ImageButton imgb) {
 		archthis = imgb;
+	}
+	
+	public void setImageListener(OnClickListener listener) {
+		image.setOnClickListener(listener);
 	}
 }
