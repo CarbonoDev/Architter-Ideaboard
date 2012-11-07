@@ -3,19 +3,14 @@
  */
 package com.example.architter;
 
-import android.app.AlertDialog;
 import android.app.Fragment;
-import android.content.Context;
-import android.content.DialogInterface;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * @author Marco
@@ -58,17 +53,34 @@ public class HomeFragment extends Fragment implements OnClickListener{
 	}
 	
 	public void onClick(View v) {
-		AlertDialog ad = new AlertDialog.Builder(getActivity()).create();
-		ad.setCancelable(true);
 		IdeaWidget i = (IdeaWidget) v.getParent();
-		ad.setTitle("aaa");
-		ad.setMessage("Respondo al evento en:"+i.getDescription());
-		ad.setButton("OK", new DialogInterface.OnClickListener() {
-
-	        public void onClick(DialogInterface dialog, int which) {
-	            dialog.dismiss();
-	        }
-	    });
-		ad.show();
+		int id = i.getIdeaId();
+//		AlertDialog ad = new AlertDialog.Builder(getActivity()).create();
+//		ad.setCancelable(true);
+//		ad.setTitle("aaa");
+//		ad.setMessage("Respondo al evento en:"+i.getDescription());
+//		ad.setButton("OK", new DialogInterface.OnClickListener() {
+//
+//	        public void onClick(DialogInterface dialog, int which) {
+//	            dialog.dismiss();
+//	        }
+//	    });
+//		ad.show();
+		loadIdeaView(id);
 	 }
+
+	public void loadIdeaView(int id) {
+		// Create new fragment and transaction
+		Fragment newFragment = new IdeaViewFragment();
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+		// Replace whatever is in the fragment_container view with this fragment,
+		// and add the transaction to the back stack
+		transaction.hide(this);
+		transaction.replace(R.id.fragment_container, newFragment);
+		transaction.addToBackStack(null);
+
+		// Commit the transaction
+		transaction.commit();
+	}
 }

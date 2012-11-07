@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.architter.IdeaView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -14,7 +14,7 @@
             android:orientation="vertical" >
 
             <ImageView
-                android:id="@+id/imageView1"
+                android:id="@+id/mainImage"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/prueba" />
@@ -30,7 +30,7 @@
                     android:layout_height="43.5dp" >
 
                     <ImageButton
-                        android:id="@+id/ImageButton3"
+                        android:id="@+id/shareButton"
                         style="@style/ImageButton"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -41,11 +41,11 @@
                         android:id="@+id/imageView2"
                         style="@style/ButtonSeparator"
                         android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@+id/ImageButton3"
+                        android:layout_toLeftOf="@+id/shareButton"
                         android:src="@drawable/button_separator" />
 
                     <ImageButton
-                        android:id="@+id/imageButton1"
+                        android:id="@+id/deleteButton"
                         style="@style/ImageButton"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
@@ -53,7 +53,7 @@
                         android:src="@drawable/delete_btn" />
 
                     <ImageButton
-                        android:id="@+id/imageButton2"
+                        android:id="@+id/archButton"
                         style="@style/ImageButton"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
@@ -140,4 +140,4 @@
         </LinearLayout>
     </ScrollView>
 
-</RelativeLayout>
+</com.example.architter.IdeaView>

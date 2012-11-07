@@ -31,6 +31,11 @@ public class IdeaWidget extends LinearLayout {
 		archthis = (ImageButton) findViewById(R.id.archthis);
 	}
 	
+	public int getIdeaId() {
+		return 0;
+	}
+	
+	
 	public void setDescription(String text) {
 		description.setText(text);
 	}
