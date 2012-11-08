@@ -1,51 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/fragment_container" >
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/category_placeholder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/home_categories"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        style="@style/TopContainer" >
+
+        <Button
+            android:id="@+id/button1"
+            style="@style/TopContainerButtonSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/button_arquitecture" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/TopContainerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button1"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button1"
+            android:text="@string/button_interior" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/TopContainerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button1"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button2"
+            android:text="@string/button_furniture" />
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/TopContainerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button1"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/button3"
+            android:text="@string/button_sets" />
+
+    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/category_placeholder"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="90dp" >
-
-		<LinearLayout
-		    android:id="@+id/linear1"
-		    android:layout_width="fill_parent"
-		    android:layout_height="match_parent"
-		    android:baselineAligned="false"
-		    android:orientation="horizontal" >
-		
-		   <LinearLayout
-		       android:id="@+id/linear2"
-		       android:layout_width="fill_parent"
-		       android:layout_height="wrap_content"
-		       android:layout_weight="0.50"
-		       android:orientation="vertical" >
 
-			</LinearLayout>
-
-		   <LinearLayout
-		       android:id="@+id/linear3"
-		       android:layout_width="fill_parent"
-		       android:layout_height="wrap_content"
-		       android:layout_weight="0.50"
-		       android:orientation="vertical" >
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal" >
 
-			</LinearLayout>
-		</LinearLayout>
+            <LinearLayout
+                android:id="@+id/linear2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.50"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.50"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 </RelativeLayout>

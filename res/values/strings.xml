@@ -8,5 +8,9 @@
     <string name="share_text">Share</string>
     <string name="button_delete"></string>
     <string name="button_archthis"></string>
+    <string name="button_arquitecture">ARQUITECTURE</string>
+    <string name="button_sets">SETS</string>
+    <string name="button_interior">INTERIOR</string>
+    <string name="button_furniture">FURNITURE</string>
 
 </resources>
