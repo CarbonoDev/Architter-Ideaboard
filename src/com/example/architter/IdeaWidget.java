@@ -12,6 +12,7 @@ public class IdeaWidget extends LinearLayout {
 	
 	private ImageView image;
 	private TextView description;
+	@SuppressWarnings("unused")
 	private ImageButton archthis;
 	
 	public IdeaWidget(Context context, AttributeSet attrs) {

@@ -83,15 +83,15 @@ public class MainActivity extends Activity {
 
         public void onTabSelected(Tab tab, FragmentTransaction ft) {
             // Check if the fragment is already initialized
-            if (mFragment == null) {
+//            if (mFragment == null) {
                 // If not, instantiate and add it to the activity
             	mActivity.setTheme(R.style.AppTheme);
                 mFragment = Fragment.instantiate(mActivity, mClass.getName());
-                ft.add(android.R.id.content, mFragment, mTag);
-            } else {
-                // If it exists, simply attach it in order to show it
-                ft.attach(mFragment);
-            }
+                ft.replace(android.R.id.content, mFragment, mTag);
+//            } else {
+//                // If it exists, simply attach it in order to show it
+//                ft.replace(mFragment);
+//            }
         }
 
         public void onTabUnselected(Tab tab, FragmentTransaction ft) {

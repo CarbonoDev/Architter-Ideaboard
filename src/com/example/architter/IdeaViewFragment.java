@@ -3,29 +3,21 @@
  */
 package com.example.architter;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 /**
  * @author Marco
  *
  */
-public class IdeaViewFragment extends Fragment {
-	private int id;
+public class IdeaViewFragment extends MyFragment {
+	private int idea_id;
 	private String main_image;
 	
-	public IdeaViewFragment(int id) {
-		super();
-		this.id = id;
-		loadData();		
-	}
-
 	public IdeaViewFragment() {
-		this.id = 0;
+		this.setIdea_id(0);
 		loadData();
 	}
 
@@ -39,5 +31,13 @@ public class IdeaViewFragment extends Fragment {
 		IdeaView idea = (IdeaView) inflater.inflate(R.layout.idea_view, container, false);
 		idea.setMainImage(main_image);
 		return idea;
+	}
+
+	public int getIdea_id() {
+		return idea_id;
+	}
+
+	public void setIdea_id(int idea_id) {
+		this.idea_id = idea_id;
 	}
 }
