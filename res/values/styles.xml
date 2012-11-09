@@ -70,6 +70,7 @@
     <style name="Container" >
         <item name="android:layout_width" >335.00dp</item>
         <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_gravity">center</item>
         <item name="android:paddingLeft" >0.5dp</item>
         <item name="android:paddingRight" >0.5dp</item>
         <item name="android:paddingBottom" >0.5dp</item>
@@ -87,8 +88,8 @@
     </style>
     
     <style name="InfoContainer" parent="@style/Container">
-                <item name="android:layout_height" >fill_parent</item>
-                <item name="android:orientation" >vertical</item>
+		<item name="android:layout_height">fill_parent</item>
+		<item name="android:orientation">vertical</item>
     </style>
     
 </resources>

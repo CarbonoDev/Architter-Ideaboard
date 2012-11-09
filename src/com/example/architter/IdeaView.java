@@ -15,6 +15,7 @@ public class IdeaView extends RelativeLayout {
 	private ImageButton shareButton;
 	private ImageButton deleteButton;
 	private ImageButton archButton;
+	private ImageButton urlButton;
 	private TextView idea_description;
 	private TextView idea_description_tags;
 	
@@ -34,6 +35,7 @@ public class IdeaView extends RelativeLayout {
 		shareButton = (ImageButton) findViewById(R.id.shareButton);
 		deleteButton = (ImageButton) findViewById(R.id.deleteButton);
 		archButton = (ImageButton) findViewById(R.id.archButton);
+		urlButton = (ImageButton) findViewById(R.id.urlButton);
 		idea_description = (TextView) findViewById(R.id.idea_description);
 		idea_description_tags = (TextView) findViewById(R.id.idea_description_tags);
 	}
@@ -64,6 +66,13 @@ public class IdeaView extends RelativeLayout {
 
 	public void setIdea_description_tags(String idea_description_tags) {
 		this.idea_description_tags.setText(idea_description_tags);
+	}
+
+	public void setListener(OnClickListener listener) {
+		shareButton.setOnClickListener(listener);
+		deleteButton.setOnClickListener(listener);
+		archButton.setOnClickListener(listener);
+		urlButton.setOnClickListener(listener);
 	}
 	
 		

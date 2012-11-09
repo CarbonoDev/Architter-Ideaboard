@@ -1,74 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView1"
+<!-- <LinearLayout -->
+<com.example.architter.ArchThisView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout2"
+        style="@style/TopContainer" >
+
+        <ImageButton
+            android:id="@+id/saveButton"
+            style="@style/ImageButton"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="11.5dp"
+            android:src="@drawable/save_btn" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:text="@android:string/cancel" />
+
+    </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/LinearLayout1"
-        android:layout_width="match_parent"
+        android:id="@+id/LinearLayout2"
+        style="@style/Container"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_marginTop="11dp" >
 
-        <RelativeLayout
-            android:id="@+id/RelativeLayout2"
-            style="@style/TopContainer" >
+        <com.example.architter.AutoImageView
+            android:id="@+id/mainImage"
+            style="@style/BorderedImage"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="11dp" />
 
-            <ImageButton
-                android:id="@+id/imageButton1"
-                style="@style/ImageButton"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="11.5dp"
-                android:src="@drawable/save_btn" />
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="12dp"
-                android:text="@android:string/cancel" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/RelativeLayout3"
-            style="@style/Container"
+        <ImageView
+            android:id="@+id/ImageView02"
+            style="@style/ButtonSeparator"
             android:layout_height="fill_parent"
-            android:layout_marginTop="11dp" >
-
-            <ImageView
-                android:id="@+id/imageView1"
-                style="@style/BorderedImage"
-                android:layout_width="92dp"
-                android:layout_height="60.5dp"
-                android:layout_marginBottom="11dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_marginTop="11dp"
-                android:src="@drawable/prueba" />
-
-            <ImageView
-                android:id="@+id/ImageView02"
-                style="@style/ButtonSeparator"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@id/imageView1"
-                android:src="@drawable/button_separator" />
-
-            <EditText
-                android:id="@+id/editText1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="false"
-                android:layout_alignTop="@+id/imageView1"
-                android:layout_toRightOf="@id/ImageView02"
-                android:ems="10"
-                android:hint="@string/description_hint"
-                android:inputType="textMultiLine" />
+            android:src="@drawable/button_separator" />
 
-        </RelativeLayout>
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/description_hint"
+            android:inputType="textMultiLine" >
+
+            <requestFocus />
+        </EditText>
+
     </LinearLayout>
 
-</ScrollView>
+    <RelativeLayout
+        android:id="@+id/shareLayout"
+        style="@style/Container"
+        android:layout_height="41.5dp"
+        android:layout_marginTop="11dp" >
+
+        <ImageView
+            android:id="@+id/shareImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="51dp"
+            android:src="@drawable/share_icon" />
+
+        <ImageView
+            android:id="@+id/ImageView01"
+            style="@style/ButtonSeparator"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/shareImage"
+            android:src="@drawable/button_separator" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/ImageView01"
+            android:text="@string/share_text" />
+
+    </RelativeLayout>
+
+</com.example.architter.ArchThisView>

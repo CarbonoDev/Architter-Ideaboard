@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.example.architter;
 
 import android.content.Intent;
@@ -11,15 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 
-/**
- * @author Marco
- *
- */
-public class IdeaViewFragment extends MyFragment  implements OnClickListener  {
+public class ArchThisFragment extends MyFragment implements OnClickListener  {
 	private int idea_id;
 	private String main_image;
 	
-	public IdeaViewFragment() {
+	public ArchThisFragment() {
 		this.setIdea_id(0);
 		loadData();
 	}
@@ -31,10 +24,10 @@ public class IdeaViewFragment extends MyFragment  implements OnClickListener  {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		IdeaView idea = (IdeaView) inflater.inflate(R.layout.idea_view, container, false);
-		idea.setListener(this);
-		idea.setMainImage(main_image);
-		return idea;
+		ArchThisView view = (ArchThisView) inflater.inflate(R.layout.arch_this, container, false);
+		view.setMainImage(main_image);
+		view.setListener(this);
+		return view;
 	}
 
 	public int getIdea_id() {
@@ -47,26 +40,15 @@ public class IdeaViewFragment extends MyFragment  implements OnClickListener  {
 
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.archButton:
-			ArchThisFragment newFragment = new ArchThisFragment();
-			newFragment.setIdea_id(idea_id);
-			loadFragment(newFragment, this);
-			break;
-		case R.id.shareButton:
+		case R.id.shareLayout:
 			Intent sendIntent = new Intent();
 			sendIntent.setAction(Intent.ACTION_SEND);
 			sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
 			sendIntent.setType("text/plain");
 			startActivity(sendIntent);
 			break;
-		case R.id.deleteButton:
-			break;
-		case R.id.urlButton:
-			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
-			startActivity(browserIntent);
-			break;
 		default:
 			break;
-		}
+		}		
 	}
 }

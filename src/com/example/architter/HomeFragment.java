@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
  * @author Marco
  *
  */
-public class HomeFragment extends MyFragment implements OnClickListener{
+public class HomeFragment extends MyFragment implements OnClickListener {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,7 +30,7 @@ public class HomeFragment extends MyFragment implements OnClickListener{
 			} else {
 				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___K_2.jpg");			
 			}
-			idea.setImageListener(this);
+			idea.setListener(this);
 			idea.setDescription("left "+i);
 			column1.addView(idea);
 		}
@@ -42,7 +42,7 @@ public class HomeFragment extends MyFragment implements OnClickListener{
 			} else {
 				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___M_2.jpg");
 			}
-			idea.setImageListener(this);
+			idea.setListener(this);
 			idea.setDescription("right "+i);
 			column2.addView(idea);
 		}
@@ -52,10 +52,15 @@ public class HomeFragment extends MyFragment implements OnClickListener{
 	public void onClick(View v) {
 		IdeaWidget i = (IdeaWidget) v.getParent();
 		int id = i.getIdeaId();
-
-		IdeaViewFragment newFragment = new IdeaViewFragment();
-		newFragment.setIdea_id(id);
-		loadFragment(newFragment, this);
+		if(v.getId() == R.id.image) {
+			IdeaViewFragment newFragment = new IdeaViewFragment();
+			newFragment.setIdea_id(id);
+			loadFragment(newFragment, this);
+		} else if (v.getId() == R.id.archthis) {
+			ArchThisFragment newFragment = new ArchThisFragment();
+			newFragment.setIdea_id(id);
+			loadFragment(newFragment, this);
+		}
 	 }
 
 

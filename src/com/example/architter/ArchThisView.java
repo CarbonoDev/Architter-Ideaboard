@@ -4,17 +4,16 @@ import com.androidhive.imagefromurl.ImageLoader;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-public class IdeaWidget extends LinearLayout {
+import android.widget.RelativeLayout;
+
+public class ArchThisView extends LinearLayout {
 	
-	private ImageView image;
-	private TextView description;
-	private ImageButton archthis;
+	private ImageView mainImage;
+	private RelativeLayout shareLayout;
 	
-	public IdeaWidget(Context context, AttributeSet attrs) {
+	public ArchThisView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
 	
@@ -25,28 +24,18 @@ public class IdeaWidget extends LinearLayout {
 	}
 	
 	private void setupViewItems() {
-		description = (TextView) findViewById(R.id.description);
-		image = (ImageView) findViewById(R.id.image);
-		archthis = (ImageButton) findViewById(R.id.archthis);
+		mainImage = (ImageView) findViewById(R.id.mainImage);
+		shareLayout = (RelativeLayout) findViewById(R.id.shareLayout);
 	}
 	
 	public int getIdeaId() {
 		return 0;
 	}
 	
-	
-	public void setDescription(String text) {
-		description.setText(text);
-	}
-	
-	public String getDescription() {
-		return (String) description.getText();
-	}
-	
-	public void setImage(String imageUrl) {
+	public void setMainImage(String imageUrl) {
         
         // Loader image - will be shown before loading image
-        int loader = R.drawable.big_logo;        
+        int loader = R.drawable.big_logo;
         
         // ImageLoader class instance
         ImageLoader imgLoader = new ImageLoader(getContext());
@@ -56,15 +45,11 @@ public class IdeaWidget extends LinearLayout {
         // url - image url to load
         // loader - loader image, will be displayed before getting image
         // image - ImageView 
-        imgLoader.DisplayImage(imageUrl, loader, image);
-	}
-	
-	public void setArchthis(ImageButton imgb) {
-		archthis = imgb;
+        imgLoader.DisplayImage(imageUrl, loader, mainImage);
 	}
 	
 	public void setListener(OnClickListener listener) {
-		image.setOnClickListener(listener);
-		archthis.setOnClickListener(listener);
+		shareLayout.setOnClickListener(listener);
 	}
+
 }
