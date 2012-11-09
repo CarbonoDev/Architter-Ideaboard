@@ -9,8 +9,8 @@
         style="@style/TopContainer" >
 
         <Button
-            android:id="@+id/button1"
-            style="@style/TopContainerButtonSelected"
+            android:id="@+id/arquitectureButton"
+            style="@style/TopContainerButton"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_alignParentLeft="true"
@@ -18,33 +18,33 @@
             android:text="@string/button_arquitecture" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/interiorButton"
             style="@style/TopContainerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button1"
+            android:layout_alignBaseline="@+id/arquitectureButton"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/button1"
+            android:layout_toRightOf="@+id/arquitectureButton"
             android:text="@string/button_interior" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/furnitureButton"
             style="@style/TopContainerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button1"
+            android:layout_alignBaseline="@+id/arquitectureButton"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/button2"
+            android:layout_toRightOf="@+id/interiorButton"
             android:text="@string/button_furniture" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/setsButton"
             style="@style/TopContainerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button1"
+            android:layout_alignBaseline="@+id/arquitectureButton"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/button3"
+            android:layout_toRightOf="@+id/furnitureButton"
             android:text="@string/button_sets" />
 
     </RelativeLayout>
