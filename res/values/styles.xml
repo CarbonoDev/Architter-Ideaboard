@@ -95,16 +95,11 @@
     <style name="TopContainerButton">
                 <item name="android:layout_height" >fill_parent</item>
                 <item name="android:orientation" >vertical</item>
-                <item name="android:padding"> 10.5dp </item>
-                <item name="android:background">@android:color/transparent</item>
+                <item name="android:padding"> 12.3dp </item>
+                <item name="android:background">@drawable/background_topcontainerbutton</item>
                 <item name="android:textSize">11.5sp</item>
-                <item name="android:textColor">#919191</item>
+                <item name="android:textColor">@color/textcolor_topcontainerbutton</item>
                 <item name="android:textStyle">bold</item>
-    </style>
-    
-    <style name="TopContainerButtonSelected" parent="@style/TopContainerButton">
-        		<item name="android:textColor">#0042B0</item>
-        		<item name="android:background">#EBF0F9</item>
     </style>
     
 </resources>

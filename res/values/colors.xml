@@ -3,5 +3,6 @@
     <color name="app_bg">#ECECED</color>
     <color name="nav_bg">#FF0000</color>
     <color name="nav_selected">#FF0000</color>
+    <color name="topContainerButtonBackground">#EBF0F9</color>
 
 </resources>
