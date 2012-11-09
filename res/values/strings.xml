@@ -8,9 +8,53 @@
     <string name="share_text">Share</string>
     <string name="button_delete"></string>
     <string name="button_archthis"></string>
-    <string name="button_arquitecture">ARQUITECTURE</string>
+    <string name="button_architecture">ARCHITECTURE</string>
     <string name="button_sets">SETS</string>
     <string name="button_interior">INTERIOR</string>
     <string name="button_furniture">FURNITURE</string>
+    <string name="button_images">IMAGES</string>
+    <string-array name="Tags">
+        <item>Homes</item>
+		<item>Apartments</item>
+		<item>Hotels</item>
+		<item>Offices</item>
+		<item>Skyscrapers</item>
+		<item>Stores</item>
+		<item>Restaurants</item>
+		<item>Museums</item>
+		<item>Exhibit</item>
+		<item>Public Buildings</item>
+		<item>Urban Planning</item>
+		<item>Landscape</item>
+		<item>Other</item>
+		<item>built</item>
+		<item>unbuilt</item>
+		<item>Concept</item>
+		<item>Student</item>
+		<item>Bathrooms</item>
+		<item>Commercial</item>
+		<item>Home</item>
+		<item>Office</item>
+		<item>Kitchen</item>
+		<item>Living</item>
+		<item>Room</item>
+		<item>Pool</item>
+		<item>Bedroom</item>
+		<item>Dining</item>
+		<item>Room</item>
+		<item>Kids</item>
+		<item>Lighting</item>
+		<item>Patio</item>
+		<item>Staircase</item>
+		<item>Chair</item>
+		<item>Desks</item>
+		<item>Dresser</item>
+		<item>Lamps</item>
+		<item>Shelving</item>
+		<item>Sideboard</item>
+		<item>Sofa</item>
+		<item>Table</item>
+		<item>Gadgets</item>
+    </string-array>
 
 </resources>

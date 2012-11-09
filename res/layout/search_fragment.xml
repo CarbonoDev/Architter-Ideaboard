@@ -1,22 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/containerSearchView"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/category_placeholder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/home_categories"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/searchContainer"
+        style="@style/TopContainer"
+        android:layout_height="89.5dp"
+        android:layout_marginBottom="19dp" >
+
+        <EditText
+            android:id="@+id/searchBar"
+            android:layout_width="300.5dp"
+            android:layout_height="38.5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="9.5dp"
+            android:layout_marginTop="9.5dp"
+            android:background="@drawable/container_bg"
+            android:paddingLeft="17dp"
+            android:paddingRight="27dp" />
+
+        <ImageView
+            android:id="@+id/sectionSeparator"
+            style="@style/SectionSeparator"
+            android:layout_height="1dp"
+            android:layout_below="@+id/searchBar"
+            android:src="@drawable/button_separator" />
+
+        <RelativeLayout
+            android:id="@+id/searchButtonContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="34.5dp"
+            android:layout_below="@+id/sectionSeparator" >
+
+            <Button
+                android:id="@+id/imagesButton"
+                style="@style/TopContainerButtonSearch"
+                android:layout_alignParentTop="true"
+                android:text="@string/button_images" />
+
+            <ImageView
+                android:id="@+id/buttonSeparator"
+                style="@style/ButtonSeparator"
+                android:layout_toRightOf="@+id/imagesButton"
+                android:src="@drawable/button_separator" />
+
+            <Button
+                android:id="@+id/setsButton"
+                style="@style/TopContainerButtonSearch"
+                android:layout_alignBaseline="@+id/imagesButton"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/buttonSeparator"
+                android:text="@string/button_sets" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/tagsListView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/category_placeholder"
-        android:layout_centerHorizontal="true" >
-
-    </LinearLayout>
+        android:layout_below="@+id/searchContainer"
+        android:entries="@array/Tags" >
+    </ListView>
 
 </RelativeLayout>
