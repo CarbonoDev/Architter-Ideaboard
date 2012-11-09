@@ -26,6 +26,7 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 		LinearLayout column1 = (LinearLayout) homeView.findViewById(R.id.linear2);
 		LinearLayout column2 = (LinearLayout) homeView.findViewById(R.id.linear3);
 		arquitectureButton = (Button) homeView.findViewById(R.id.arquitectureButton);
+		arquitectureButton.setSelected(true);
 		interiorButton = (Button) homeView.findViewById(R.id.interiorButton);
 		furnitureButton = (Button) homeView.findViewById(R.id.furnitureButton);
 		setsButton = (Button) homeView.findViewById(R.id.setsButton);
