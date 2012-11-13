@@ -1,22 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/containerProfileView"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/category_placeholder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/home_categories"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/category_placeholder"
-        android:layout_centerHorizontal="true" >
+    <RelativeLayout
+        android:id="@+id/userContainer"
+        style="@style/TopContainer"
+        android:layout_height="89.5dp"
+        android:layout_marginBottom="7dp" >
 
-    </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/userDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp" >
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/sectionSeparator"
+            style="@style/SectionSeparator"
+            android:layout_height="1dp"
+            android:layout_below="@+id/userDetails"
+            android:src="@drawable/button_separator" />
+
+        <RelativeLayout
+            android:id="@+id/tagButtonContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="34.5dp"
+            android:layout_below="@+id/sectionSeparator" >
+
+            <Button
+                android:id="@+id/ideasButton"
+                style="@style/TopContainerButtonTags"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:layout_width="110dp"
+                android:layout_alignParentTop="true"
+                android:text="@string/button_ideas" />
+
+            <ImageView
+                android:id="@+id/buttonSeparator"
+                style="@style/ButtonSeparator"
+                android:layout_toRightOf="@+id/ideasButton"
+                android:src="@drawable/button_separator" />
+
+            <Button
+                android:id="@+id/setsButton"
+                style="@style/TopContainerButtonTags"
+                android:layout_alignBaseline="@+id/ideasButton"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:layout_width="110dp"
+                android:layout_toRightOf="@+id/buttonSeparator"
+                android:text="@string/button_sets" />
+
+            <ImageView
+                android:id="@+id/buttonSeparator2"
+                style="@style/ButtonSeparator"
+                android:layout_toRightOf="@+id/setsButton"
+                android:src="@drawable/button_separator" />
+
+            <Button
+                android:id="@+id/projectsButton"
+                style="@style/TopContainerButtonTags"
+                android:layout_alignBaseline="@+id/ideasButton"
+                android:layout_alignParentTop="true"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:layout_toRightOf="@+id/buttonSeparator2"
+                android:layout_width="110dp"
+                android:text="@string/button_projects" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/profileSearchBar"
+        style="@style/TopContainer"
+        android:layout_height="38.5dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/container_bg"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:paddingLeft="17dp"
+        android:paddingRight="27dp"
+        android:layout_below="@+id/userContainer" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>
