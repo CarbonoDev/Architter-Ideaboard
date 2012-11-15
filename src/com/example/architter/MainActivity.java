@@ -1,5 +1,7 @@
 package com.example.architter;
 
+import com.architter.connection.ConnectionManager;
+
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -13,7 +15,8 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+        ConnectionManager.setActivity(this);
+        ConnectionManager.logIn();
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         actionBar.setDisplayShowHomeEnabled(false);
@@ -30,7 +33,7 @@ public class MainActivity extends Activity {
                 .setText("")
                 .setIcon(R.drawable.tags_button)
                 .setTabListener(new TabListener<TagsFragment>(
-                        this, "Tags", TagsFragment.class));
+                        this, "tags", TagsFragment.class));
         actionBar.addTab(tab);
         
         tab = actionBar.newTab()

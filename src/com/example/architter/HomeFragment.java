@@ -3,6 +3,13 @@
  */
 package com.example.architter;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.architter.connection.ConnectionManager;
+import com.loopj.android.http.JsonHttpResponseHandler;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +30,18 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View homeView = inflater.inflate(R.layout.home_fragment, container, false);
+		
+		ConnectionManager.getIdeas(1, new  JsonHttpResponseHandler() {
+			@Override
+			public void onSuccess(JSONArray ideas) {
+				loadElements(ideas);
+			}
+		});
+		return homeView;
+	}
+	
+	public void loadElements(JSONArray ideas){
+		View homeView = getView();
 		LinearLayout column1 = (LinearLayout) homeView.findViewById(R.id.linear2);
 		LinearLayout column2 = (LinearLayout) homeView.findViewById(R.id.linear3);
 		arquitectureButton = (Button) homeView.findViewById(R.id.arquitectureButton);
@@ -34,33 +53,43 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 		interiorButton.setOnClickListener(this);
 		furnitureButton.setOnClickListener(this);
 		setsButton.setOnClickListener(this);
+		LayoutInflater inflater = LayoutInflater.from(getActivity());
 		IdeaWidget idea;
-		for(int i = 0; i < 20; i++){
-			idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, column1, false);
-			if(i % 2 == 0) {
-				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___J_7.jpg");
-			} else {
-				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___K_2.jpg");			
+		int column = 1;
+		
+		for (int i = 0; i < ideas.length(); i++) {
+			try {
+				JSONObject invention = ideas.getJSONObject(i);
+				String img = invention.getString("img");
+				if(img.startsWith("./")) {
+					img = img.substring(2);
+				};
+				img = ConnectionManager.ASSET_BASE + img;
+				String description = invention.getString("descr");
+				String user = invention.getString("iduser");
+				idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, column1, false);
+				idea.setImage(img);
+				idea.setDescription(description+user);
+				idea.setListener(this);
+				switch (column) {
+				case 1:
+					column1.addView(idea);
+					column++;
+					break;
+				case 2:
+					column2.addView(idea);
+					column++;
+				default:
+					column = 1;
+					break;
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+				break;
 			}
-			idea.setListener(this);
-			idea.setDescription("left "+i);
-			column1.addView(idea);
+			
 		}
-		for(int i = 0; i < 20; i++){
-			idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, column1, false);
-			idea.setDescription("Ya jala la imagen :)");
-			if(i % 2 == 0) {
-				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___C_2.jpg");
-			} else {
-				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___M_2.jpg");
-			}
-			idea.setListener(this);
-			idea.setDescription("right "+i);
-			column2.addView(idea);
-		}
-		return homeView;
 	}
-	
 	public void onClick(View v) {
 		switch(v.getId()) {
 			case R.id.arquitectureButton: {
