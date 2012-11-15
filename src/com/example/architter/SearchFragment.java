@@ -12,6 +12,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -28,11 +29,16 @@ public class SearchFragment extends MyFragment implements OnItemClickListener, O
 	ScrollView scrollView;
 	LinearLayout ideaContainer, column1, column2;
 	String [] tagsArray;
+	Button imagesButton, setsButton;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View searchView = inflater.inflate(R.layout.search_fragment, container, false);
+		imagesButton = (Button) searchView.findViewById(R.id.imagesButton);
+		setsButton = (Button) searchView.findViewById(R.id.setsButton);
+		imagesButton.setOnClickListener(this);
+		setsButton.setOnClickListener(this);
 		containerView = (RelativeLayout) searchView.findViewById(R.id.containerSearchView);
 		tagsListView = (ListView) searchView.findViewById(R.id.tagsListView);
 		tagsListView.setOnItemClickListener(this);
@@ -93,7 +99,21 @@ public class SearchFragment extends MyFragment implements OnItemClickListener, O
 	}
 	
 	public void onClick(View v) {
-		
+		switch(v.getId()) {
+			case R.id.imagesButton: {
+				setsButton.setSelected(false);
+				v.setSelected(true);
+				break;
+			}
+			case R.id.setsButton: {
+				imagesButton.setSelected(false);
+				v.setSelected(true);
+				break;
+			}
+			default: {
+				break;
+			}
+		}
 	}
 	
 }

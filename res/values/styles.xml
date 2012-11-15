@@ -108,18 +108,29 @@
                 <item name="android:background">@drawable/background_topcontainerbutton</item>
 				<item name="android:textSize">11.5dp</item>
                 <item name="android:textStyle">bold</item>
-				<item name="android:textColor">#828589</item>
+				<item name="android:textColor">@color/textcolor_topcontainerbutton</item>
     </style>
     
     <style name="TopContainerButtonTags">
                <item name="android:layout_width">wrap_content</item>
                 <item name="android:layout_height">34.5dp</item>
                 <item name="android:paddingLeft">29dp</item>
-                <item name="android:paddingRight">15dp</item>
+                <item name="android:paddingRight">16.5dp</item>
                 <item name="android:background">@drawable/background_topcontainerbutton</item>
 				<item name="android:textSize">11.5dp</item>
                 <item name="android:textStyle">bold</item>
-				<item name="android:textColor">#828589</item>
+				<item name="android:textColor">@color/textcolor_topcontainerbutton</item>
+    </style>
+    
+        <style name="TopContainerButtonProfile">
+               <item name="android:layout_width">wrap_content</item>
+                <item name="android:layout_height">29.5dp</item>
+                <item name="android:paddingLeft">30dp</item>
+                <item name="android:paddingRight">17dp</item>
+                <item name="android:background">@drawable/background_topcontainerbutton</item>
+				<item name="android:textSize">11.5dp</item>
+                <item name="android:textStyle">bold</item>
+				<item name="android:textColor">@color/textcolor_topcontainerbutton</item>
     </style>
     
 </resources>

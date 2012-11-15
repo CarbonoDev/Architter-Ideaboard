@@ -24,14 +24,14 @@
             android:src="@drawable/button_separator" />
 
         <RelativeLayout
-            android:id="@+id/tagButtonContainer"
+            android:id="@+id/profileButtonContainer"
             android:layout_width="fill_parent"
-            android:layout_height="34.5dp"
+            android:layout_height="29.5dp"
             android:layout_below="@+id/sectionSeparator" >
 
             <Button
                 android:id="@+id/ideasButton"
-                style="@style/TopContainerButtonTags"
+                style="@style/TopContainerButtonProfile"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
                 android:layout_width="110dp"
@@ -46,7 +46,7 @@
 
             <Button
                 android:id="@+id/setsButton"
-                style="@style/TopContainerButtonTags"
+                style="@style/TopContainerButtonProfile"
                 android:layout_alignBaseline="@+id/ideasButton"
                 android:layout_alignParentTop="true"
                 android:paddingLeft="0dp"
@@ -63,7 +63,7 @@
 
             <Button
                 android:id="@+id/projectsButton"
-                style="@style/TopContainerButtonTags"
+                style="@style/TopContainerButtonProfile"
                 android:layout_alignBaseline="@+id/ideasButton"
                 android:layout_alignParentTop="true"
                 android:paddingLeft="0dp"

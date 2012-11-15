@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
  */
 public class HomeFragment extends MyFragment implements OnClickListener {
 	
-	Button arquitectureButton, interiorButton, furnitureButton, setsButton;
+	Button architectureButton, interiorButton, furnitureButton, setsButton;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,12 +44,12 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 		View homeView = getView();
 		LinearLayout column1 = (LinearLayout) homeView.findViewById(R.id.linear2);
 		LinearLayout column2 = (LinearLayout) homeView.findViewById(R.id.linear3);
-		arquitectureButton = (Button) homeView.findViewById(R.id.arquitectureButton);
-		arquitectureButton.setSelected(true);
+		architectureButton = (Button) homeView.findViewById(R.id.architectureButton);
+		architectureButton.setSelected(true);
 		interiorButton = (Button) homeView.findViewById(R.id.interiorButton);
 		furnitureButton = (Button) homeView.findViewById(R.id.furnitureButton);
 		setsButton = (Button) homeView.findViewById(R.id.setsButton);
-		arquitectureButton.setOnClickListener(this);
+		architectureButton.setOnClickListener(this);
 		interiorButton.setOnClickListener(this);
 		furnitureButton.setOnClickListener(this);
 		setsButton.setOnClickListener(this);
@@ -92,7 +92,7 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 	}
 	public void onClick(View v) {
 		switch(v.getId()) {
-			case R.id.arquitectureButton: {
+			case R.id.architectureButton: {
 				interiorButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				setsButton.setSelected(false);
@@ -100,21 +100,21 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 				break;
 			}
 			case R.id.interiorButton: {
-				arquitectureButton.setSelected(false);
+				architectureButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				setsButton.setSelected(false);
 				v.setSelected(true);
 				break;
 			}
 			case R.id.furnitureButton: {
-				arquitectureButton.setSelected(false);
+				architectureButton.setSelected(false);
 				interiorButton.setSelected(false);
 				setsButton.setSelected(false);
 				v.setSelected(true);
 				break;
 			}
 			case R.id.setsButton: {
-				arquitectureButton.setSelected(false);
+				architectureButton.setSelected(false);
 				interiorButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				v.setSelected(true);
