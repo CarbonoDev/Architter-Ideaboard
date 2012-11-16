@@ -18,6 +18,8 @@ import android.widget.RelativeLayout;
 public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 	ObservableScrollView scroll;
 	String tags = "";
+	String search = "";
+	int idUser = 0;
 	int page = 1;
 	private OnClickListener listener;
 	public IdeasScroll(Context context, AttributeSet attrs, int defStyle) {
@@ -55,6 +57,20 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 		this.tags = tags;
 		loadIdeas();
 	}
+	public void searchIdeas(String search) {
+		this.search = search;
+		loadIdeas();
+	}
+	public void loadUserIdeas(String tags, int idUser) {
+		this.tags = tags;
+		this.idUser = idUser;
+		loadUserIdeas();
+	}
+	public void searchUserIdeas(String search, int idUser) {
+		this.search = search;
+		this.idUser = idUser;
+		loadUserIdeas();
+	}
 	public void loadIdeas(String tags, boolean erase) {
 		if(erase) {
 			LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
@@ -66,11 +82,42 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 		}
 		loadIdeas(tags);
 	}
+	public void searchIdeas(String search, boolean erase) {
+		if(erase) {
+			LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
+			LinearLayout column2 = (LinearLayout) this.findViewById(R.id.linear3);
+			column1.removeAllViews();
+			column2.removeAllViews();
+			page = 1;
+		}
+		searchIdeas(search);
+	}
+	public void loadUserIdeas(String tags, int idUser, boolean erase) {
+		if(erase) {
+			LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
+			LinearLayout column2 = (LinearLayout) this.findViewById(R.id.linear3);
+			column1.removeAllViews();
+			column2.removeAllViews();
+			page = 1;
+		}
+		loadUserIdeas(tags, idUser);
+	}
+	public void searchUserIdeas(String search, int idUser, boolean erase) {
+		if(erase) {
+			LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
+			LinearLayout column2 = (LinearLayout) this.findViewById(R.id.linear3);
+			column1.removeAllViews();
+			column2.removeAllViews();
+			page = 1;
+		}
+		searchUserIdeas(search, idUser);
+	}
 
 	public void loadIdeas() {
 		RequestParams params = new RequestParams();
 		params.put("page", ""+page);
 		params.put("tags", tags);
+		params.put("search", search);
 		ConnectionManager.getIdeas(params, new  JsonHttpResponseHandler() {
 			@Override
 			public void onFailure(Throwable arg0) {
@@ -85,45 +132,69 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 		});	
 	}
 	
+	public void loadUserIdeas() {
+		RequestParams params = new RequestParams();
+		params.put("page", ""+page);
+		params.put("tags", tags);
+		params.put("search", search);
+		ConnectionManager.getUserIdeas(params, this.idUser, new  JsonHttpResponseHandler() {
+			@Override
+			public void onFailure(Throwable arg0) {
+				System.out.println(":(");
+			}
+			@Override
+			public void onSuccess(JSONArray ideas) {
+				System.out.println("loaded");
+				loadElements(ideas);
+			}
+		});		
+	}
+	
+	
 	public void loadElements(JSONArray ideas){
 		LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
 		LinearLayout column2 = (LinearLayout) this.findViewById(R.id.linear3);
 		IdeaWidget idea = null;
 		IdeaWidget cont = new IdeaWidget(getContext());
 		int column = 1;
-		for (int i = 0; i < ideas.length(); i++) {
-			try {
-				JSONObject invention = ideas.getJSONObject(i);
-				String img = invention.getString("img");
-				if(!img.startsWith("./ideaboardImages/")) {
-					img = "./ideaboardImages/" + img;
-				};
-				LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, cont, false);
-				img = ConnectionManager.ASSET_BASE + img;
-				String description = invention.getString("descr");
-				String user = invention.getString("iduser");
-				idea.setImage(img);
-				idea.setDescription(description+user);
-				idea.setListener(listener);
-				switch (column) {
-				case 1:
-					column1.addView(idea);
-					column++;
+		if(ideas.length() == 0) {
+			this.findViewById(R.id.notFound).setVisibility(VISIBLE);
+		} else {
+			this.findViewById(R.id.notFound).setVisibility(GONE);
+			for (int i = 0; i < ideas.length(); i++) {
+				try {
+					JSONObject invention = ideas.getJSONObject(i);
+					String img = invention.getString("img");
+					if(!img.startsWith("./ideaboardImages/")) {
+						img = "./ideaboardImages/" + img;
+					};
+					LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+					idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, cont, false);
+					img = ConnectionManager.ASSET_BASE + img;
+					String description = invention.getString("descr");
+					String user = invention.getString("iduser");
+					idea.setImage(img);
+					idea.setDescription(description+user);
+					idea.setListener(listener);
+					switch (column) {
+					case 1:
+						column1.addView(idea);
+						column++;
+						break;
+					case 2:
+						column2.addView(idea);
+						column++;
+					default:
+						column = 1;
+						break;
+					}				
+					page++;
+				} catch (JSONException e) {
+					e.printStackTrace();
 					break;
-				case 2:
-					column2.addView(idea);
-					column++;
-				default:
-					column = 1;
-					break;
-				}				
-				page++;
-			} catch (JSONException e) {
-				e.printStackTrace();
-				break;
+				}
+				
 			}
-			
 		}
 	}
 

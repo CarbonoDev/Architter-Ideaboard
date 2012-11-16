@@ -13,7 +13,13 @@
         <EditText
             android:id="@+id/searchBar"
             android:layout_width="300.5dp"
-            android:layout_height="38.5dp"
+            android:layout_height="34.5dp"
+            android:hint="SEARCH ARCHITTER"
+            android:drawableRight="@drawable/search_icon"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
+            android:textColorHint="#919191"
+            android:textSize="11.5sp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="9.5dp"
             android:layout_marginTop="9.5dp"
@@ -55,6 +61,14 @@
                 android:text="@string/button_sets" />
         </RelativeLayout>
     </RelativeLayout>
+    
+     <com.architter.widgets.IdeasScroll
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/searchContainer"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
 
     <ListView
         android:id="@+id/tagsListView"

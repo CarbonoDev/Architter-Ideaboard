@@ -15,7 +15,7 @@ public class ConnectionManager {
 	private static AsyncHttpClient client = new AsyncHttpClient();
 
 	public static void get(String url, RequestParams params,
-			AsyncHttpResponseHandler responseHandler) {
+		AsyncHttpResponseHandler responseHandler) {
 		PersistentCookieStore myCookieStore = new PersistentCookieStore(activity);
 		client.setCookieStore(myCookieStore);
 		String fullUrl = getAbsoluteUrl(url);
@@ -63,6 +63,11 @@ public class ConnectionManager {
 		String resource = "ideas";
 		ConnectionManager.get(resource, params, responseHandler);
 	}
+	public static void getUserIdeas(RequestParams params, int idUser, AsyncHttpResponseHandler responseHandler) {
+		String resource = "users/ideas/"+idUser;
+		ConnectionManager.get(resource, params, responseHandler);
+	}
+	
 	
 	public static Activity getActivity() {
 		return activity;

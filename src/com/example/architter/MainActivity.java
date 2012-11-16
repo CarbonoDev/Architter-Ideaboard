@@ -57,6 +57,17 @@ public class MainActivity extends Activity {
         return true;
     }
     
+    @Override
+    public void onBackPressed()
+    {
+        SearchFragment search = (SearchFragment)getFragmentManager().findFragmentByTag("search");
+        if(search.isVisible()) {
+        	search.onBackPressed();
+        } else {
+        	super.onBackPressed();
+        }
+    }
+    
     
     
     /**

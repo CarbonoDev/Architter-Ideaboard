@@ -4,34 +4,45 @@
 package com.example.architter;
 
 import com.architter.widgets.IdeaWidget;
+import com.architter.widgets.IdeasScroll;
 
 import android.app.ActionBar.LayoutParams;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 /**
  * @author Marco
  *
  */
-public class SearchFragment extends MyFragment implements OnItemClickListener, OnClickListener {
+public class SearchFragment extends MyFragment implements OnItemClickListener, OnClickListener, OnEditorActionListener {
 	
 	ListView tagsListView;
 	RelativeLayout containerView;
-	ScrollView scrollView;
-	LinearLayout ideaContainer, column1, column2;
+//	ScrollView scrollView;
+//	LinearLayout ideaContainer, column1, column2;
 	String [] tagsArray;
 	Button imagesButton, setsButton;
+	IdeasScroll ideasScroll;
+	EditText searchBar;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,59 +56,27 @@ public class SearchFragment extends MyFragment implements OnItemClickListener, O
 		tagsListView = (ListView) searchView.findViewById(R.id.tagsListView);
 		tagsListView.setOnItemClickListener(this);
 		tagsArray = getResources().getStringArray(R.array.Tags);
+		ideasScroll = (IdeasScroll) searchView.findViewById(R.id.scrollView1);
+		ideasScroll.setFragment(this);
+		searchBar = (EditText) searchView.findViewById(R.id.searchBar);
+		searchBar.setOnEditorActionListener(this);
 		return searchView;
 	}
 
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		System.out.println(tagsArray[arg2]);
-		displayIdeas();
+		displayIdeas(tagsArray[arg2]);
 	}
 	
-	public void displayIdeas() {
+	public void displayIdeas(String tag) {
 		tagsListView.setVisibility(View.GONE);
-		scrollView = new ScrollView(getActivity());
-		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-		        RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-		lp.addRule(RelativeLayout.BELOW, R.id.searchContainer);
-		containerView.addView(scrollView, lp);
-		ideaContainer = new LinearLayout(getActivity()); 
-		ideaContainer.setOrientation(LinearLayout.HORIZONTAL); 
-		ideaContainer.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-		ideaContainer.setGravity(Gravity.CENTER);
-		scrollView.addView(ideaContainer);
-		column1 = new LinearLayout(getActivity());
-		column1.setOrientation(LinearLayout.VERTICAL);  
-		column1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
-		ideaContainer.addView(column1);
-		column2 = new LinearLayout(getActivity());
-		column2.setOrientation(LinearLayout.VERTICAL);  
-		column2.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
-		ideaContainer.addView(column2);
-		IdeaWidget idea;
-		LayoutInflater inflater = LayoutInflater.from(getActivity());
-		for(int i = 0; i < 20; i++){
-			idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, column1, false);
-			if(i % 2 == 0) {
-				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___J_7.jpg");
-			} else {
-				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___K_2.jpg");			
-			}
-			idea.setListener(this);
-			idea.setDescription("left "+i);
-			column1.addView(idea);
-		}
-		for(int i = 0; i < 20; i++){
-			idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, column1, false);
-			idea.setDescription("Ya jala la imagen :)");
-			if(i % 2 == 0) {
-				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___C_2.jpg");
-			} else {
-				idea.setImage("http://www.architter.com/images/Paga_Todo____usoarquitectura___M_2.jpg");
-			}
-			idea.setListener(this);
-			idea.setDescription("right "+i);
-			column2.addView(idea);
-		}
+		ideasScroll.setVisibility(View.VISIBLE);
+		ideasScroll.loadIdeas(tag, true);
+	}
+	
+	public void displaySearchIdeas(String search) {
+		tagsListView.setVisibility(View.GONE);
+		ideasScroll.setVisibility(View.VISIBLE);
+		ideasScroll.searchIdeas(search, true);
 	}
 	
 	public void onClick(View v) {
@@ -116,6 +95,21 @@ public class SearchFragment extends MyFragment implements OnItemClickListener, O
 				break;
 			}
 		}
+	}
+
+	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		if (actionId == EditorInfo.IME_ACTION_DONE) {
+			InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            displaySearchIdeas(v.getText().toString());
+            return true;	
+        }
+		return false;
+	}
+	
+	public void onBackPressed() {
+		tagsListView.setVisibility(View.VISIBLE);
+		ideasScroll.setVisibility(View.GONE);
 	}
 	
 }

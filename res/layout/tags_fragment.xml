@@ -73,5 +73,12 @@
             
         </RelativeLayout>
     </RelativeLayout>
+    
+    <com.architter.widgets.IdeasScroll
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tagsContainer"
+        android:layout_centerHorizontal="true"  />
 
 </RelativeLayout>

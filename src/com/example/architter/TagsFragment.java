@@ -3,6 +3,8 @@
  */
 package com.example.architter;
 
+import com.architter.widgets.IdeasScroll;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.Button;
 public class TagsFragment extends MyFragment implements OnClickListener {
 	
 	Button architectureButton, interiorButton, furnitureButton;
+	IdeasScroll ideasScroll;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,6 +33,8 @@ public class TagsFragment extends MyFragment implements OnClickListener {
 		architectureButton.setOnClickListener(this);
 		interiorButton.setOnClickListener(this);
 		furnitureButton.setOnClickListener(this);
+		ideasScroll = (IdeasScroll) tagsView.findViewById(R.id.scrollView1);
+		ideasScroll.loadUserIdeas("architecture", 200386, true);
 		return tagsView;
 	}
 
@@ -39,18 +44,21 @@ public class TagsFragment extends MyFragment implements OnClickListener {
 				interiorButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				v.setSelected(true);
+				ideasScroll.loadUserIdeas("architecture", 200386, true);
 				break;
 			}
 			case R.id.interiorButton: {
 				architectureButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				v.setSelected(true);
+				ideasScroll.loadUserIdeas("interior", 200386, true);
 				break;
 			}
 			case R.id.furnitureButton: {
 				architectureButton.setSelected(false);
 				interiorButton.setSelected(false);
 				v.setSelected(true);
+				ideasScroll.loadUserIdeas("furniture", 200386, true);
 				break;
 			}
 			default: {

@@ -3,6 +3,8 @@
  */
 package com.example.architter;
 
+import com.architter.widgets.IdeasScroll;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.Button;
 public class ProfileFragment extends MyFragment implements OnClickListener {
 
 	Button ideasButton, setsButton, projectsButton;
+	IdeasScroll ideasScroll;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +34,8 @@ public class ProfileFragment extends MyFragment implements OnClickListener {
 		ideasButton.setOnClickListener(this);
 		setsButton.setOnClickListener(this);
 		projectsButton.setOnClickListener(this);
-		
+		ideasScroll = (IdeasScroll) profileView.findViewById(R.id.scrollView1);
+		ideasScroll.loadUserIdeas("", 200386, true);
 		return profileView;
 	}
 
