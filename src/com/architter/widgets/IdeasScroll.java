@@ -63,6 +63,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 			column1.removeAllViews();
 			column2.removeAllViews();
 			page = 1;
+			this.findViewById(R.id.loadingView).setVisibility(VISIBLE);
 		}
 		loadIdeas(tags);
 	}
@@ -79,6 +80,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 			@Override
 			public void onSuccess(JSONArray ideas) {
 				System.out.println("loaded");
+				findViewById(R.id.loadingView).setVisibility(GONE);
 				loadElements(ideas);
 			}
 		});		
