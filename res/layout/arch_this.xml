@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- <LinearLayout -->
-<com.example.architter.ArchThisView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.architter.widgets.ArchThisView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp" >
 
-        <com.example.architter.AutoImageView
+        <com.architter.widgets.AutoImageView
             android:id="@+id/mainImage"
             style="@style/BorderedImage"
             android:layout_width="92dp"
@@ -99,4 +99,4 @@
 
     </RelativeLayout>
 
-</com.example.architter.ArchThisView>
+</com.architter.widgets.ArchThisView>

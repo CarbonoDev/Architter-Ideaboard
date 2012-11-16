@@ -1,26 +1,20 @@
 package com.architter.widgets;
 
 import com.androidhive.imagefromurl.ImageLoader;
-import com.example.architter.ArchThisFragment;
-import com.example.architter.IdeaViewFragment;
-import com.example.architter.MyFragment;
 import com.example.architter.R;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class IdeaWidget extends LinearLayout implements OnClickListener {
+public class IdeaWidget extends LinearLayout {
 	
 	private ImageView image;
 	private TextView description;
 	private ImageButton archthis;
-	private MyFragment fragment;
 	
 	public IdeaWidget(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -40,8 +34,6 @@ public class IdeaWidget extends LinearLayout implements OnClickListener {
 		description = (TextView) findViewById(R.id.description);
 		image = (ImageView) findViewById(R.id.image);
 		archthis = (ImageButton) findViewById(R.id.archthis);
-		image.setOnClickListener(this);
-		archthis.setOnClickListener(this);
 	}
 	
 	public int getIdeaId() {
@@ -82,32 +74,4 @@ public class IdeaWidget extends LinearLayout implements OnClickListener {
 		archthis.setOnClickListener(listener);
 	}
 
-	public void setFragment(MyFragment fragment) {
-		this.fragment = fragment;
-		
-	}
-
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.image: {
-			int id = this.getIdeaId();
-			IdeaViewFragment newFragment = new IdeaViewFragment();
-			newFragment.setIdea_id(id);
-			//fragment.loadFragment(newFragment, fragment);
-			break;
-		}
-		case R.id.archthis: {
-			IdeaWidget i = (IdeaWidget) v.getParent();
-			int id = this.getIdeaId();
-			ArchThisFragment newFragment = new ArchThisFragment();
-			newFragment.setIdea_id(id);
-			//fragment.loadFragment(newFragment, fragment);
-			break;
-		}
-
-		default:
-			break;
-		}
-		
-	}
 }

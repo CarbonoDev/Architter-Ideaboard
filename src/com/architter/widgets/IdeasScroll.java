@@ -5,7 +5,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.architter.connection.ConnectionManager;
-import com.example.architter.MyFragment;
 import com.example.architter.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -18,9 +17,9 @@ import android.widget.RelativeLayout;
 
 public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 	ObservableScrollView scroll;
-	private MyFragment fragment;
 	String tags = "";
 	int page = 1;
+	private OnClickListener listener;
 	public IdeasScroll(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		// TODO Auto-generated constructor stub
@@ -83,7 +82,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 				findViewById(R.id.loadingView).setVisibility(GONE);
 				loadElements(ideas);
 			}
-		});		
+		});	
 	}
 	
 	public void loadElements(JSONArray ideas){
@@ -104,9 +103,9 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 				img = ConnectionManager.ASSET_BASE + img;
 				String description = invention.getString("descr");
 				String user = invention.getString("iduser");
-				idea.setFragment(fragment);
 				idea.setImage(img);
 				idea.setDescription(description+user);
+				idea.setListener(listener);
 				switch (column) {
 				case 1:
 					column1.addView(idea);
@@ -140,7 +139,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 	    }		
 	}
 
-	public void setFragment(MyFragment fragment) {
-		this.fragment = fragment;		
+	public void setListener(OnClickListener listener) {
+		this.listener = listener;
 	}
 }
