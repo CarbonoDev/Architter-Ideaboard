@@ -10,7 +10,7 @@ import com.loopj.android.http.RequestParams;
 public class ConnectionManager {
 
 	private static final String BASE_URL = "http://api.architter.com/";
-	public static final String ASSET_BASE = "http://www.architter.com/ideaboard/";
+	public static final String ASSET_BASE = "http://www.architter.com/ideaboard/image.php?image=";
 	private static Activity activity; 
 	private static AsyncHttpClient client = new AsyncHttpClient();
 
@@ -59,10 +59,8 @@ public class ConnectionManager {
 		});
 	}
 
-	public static void getIdeas(int page, AsyncHttpResponseHandler responseHandler) {
+	public static void getIdeas(RequestParams params, AsyncHttpResponseHandler responseHandler) {
 		String resource = "ideas";
-		RequestParams params = new RequestParams();
-		params.put("page", ""+page);
 		ConnectionManager.get(resource, params, responseHandler);
 	}
 	

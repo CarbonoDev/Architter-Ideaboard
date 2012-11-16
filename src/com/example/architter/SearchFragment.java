@@ -3,6 +3,8 @@
  */
 package com.example.architter;
 
+import com.architter.widgets.IdeaWidget;
+
 import android.app.ActionBar.LayoutParams;
 import android.os.Bundle;
 import android.view.Gravity;

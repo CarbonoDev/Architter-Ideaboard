@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayout1"
-    style="@style/IdeaWidget"
-    android:layout_height="wrap_content"
-    android:orientation="vertical" >
--->
-<com.example.architter.IdeaWidget xmlns:android="http://schemas.android.com/apk/res/android"
+<com.architter.widgets.IdeaWidget xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/IdeaWidget"
     android:layout_width="163dp"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <com.example.architter.AutoImageView
+    <com.architter.widgets.AutoImageView
         android:id="@+id/image"
         android:layout_height="wrap_content"
     	android:layout_width="fill_parent"
@@ -35,5 +28,4 @@
         android:contentDescription="@string/button_archthis"
         android:src="@drawable/arch_btn" />
 
-<!-- </LinearLayout> -->
-</com.example.architter.IdeaWidget>
+</com.architter.widgets.IdeaWidget>

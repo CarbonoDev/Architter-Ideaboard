@@ -3,6 +3,8 @@
  */
 package com.example.architter;
 
+import com.architter.widgets.IdeaView;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
