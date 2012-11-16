@@ -9,7 +9,7 @@
         style="@style/TopContainer" >
 
         <Button
-            android:id="@+id/arquitectureButton"
+            android:id="@+id/architectureButton"
             style="@style/TopContainerButton"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
@@ -22,9 +22,9 @@
             style="@style/TopContainerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/arquitectureButton"
+            android:layout_alignBaseline="@+id/architectureButton"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/arquitectureButton"
+            android:layout_toRightOf="@+id/architectureButton"
             android:text="@string/button_interior" />
 
         <Button
@@ -32,7 +32,7 @@
             style="@style/TopContainerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/arquitectureButton"
+            android:layout_alignBaseline="@+id/architectureButton"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/interiorButton"
             android:text="@string/button_furniture" />
@@ -42,7 +42,7 @@
             style="@style/TopContainerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/arquitectureButton"
+            android:layout_alignBaseline="@+id/architectureButton"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/furnitureButton"
             android:text="@string/button_sets" />

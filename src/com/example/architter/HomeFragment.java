@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.example.architter;
 
@@ -17,38 +17,37 @@ import android.widget.Button;
  *
  */
 public class HomeFragment extends MyFragment implements OnClickListener {
-	
-	Button arquitectureButton, interiorButton, furnitureButton, setsButton;
+
+	Button architectureButton, interiorButton, furnitureButton, setsButton;
 	IdeasScroll ideasScroll;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View homeView = inflater.inflate(R.layout.home_fragment, container, false);
-		arquitectureButton = (Button) homeView.findViewById(R.id.arquitectureButton);
-		arquitectureButton.setSelected(true);
+		architectureButton = (Button) homeView.findViewById(R.id.architectureButton);
+		architectureButton.setSelected(true);
 		interiorButton = (Button) homeView.findViewById(R.id.interiorButton);
 		furnitureButton = (Button) homeView.findViewById(R.id.furnitureButton);
 		setsButton = (Button) homeView.findViewById(R.id.setsButton);
-		ideasScroll = (IdeasScroll) homeView.findViewById(R.id.scrollView1);
-		arquitectureButton.setOnClickListener(this);
+		architectureButton.setOnClickListener(this);
 		interiorButton.setOnClickListener(this);
 		furnitureButton.setOnClickListener(this);
-		setsButton.setOnClickListener(this);	
+		setsButton.setOnClickListener(this);
 		ideasScroll.setFragment(this);
 		return homeView;
 	}
-	
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		ideasScroll.loadIdeas("architecture", true);
 	}
-	
-	
+
+
 	public void onClick(View v) {
 		switch(v.getId()) {
-			case R.id.arquitectureButton: {
+			case R.id.architectureButton: {
 				interiorButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				setsButton.setSelected(false);
@@ -57,7 +56,7 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 				break;
 			}
 			case R.id.interiorButton: {
-				arquitectureButton.setSelected(false);
+				architectureButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				setsButton.setSelected(false);
 				v.setSelected(true);
@@ -65,7 +64,7 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 				break;
 			}
 			case R.id.furnitureButton: {
-				arquitectureButton.setSelected(false);
+				architectureButton.setSelected(false);
 				interiorButton.setSelected(false);
 				setsButton.setSelected(false);
 				v.setSelected(true);
@@ -73,7 +72,7 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 				break;
 			}
 			case R.id.setsButton: {
-				arquitectureButton.setSelected(false);
+				architectureButton.setSelected(false);
 				interiorButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				v.setSelected(true);
