@@ -40,6 +40,13 @@ public class ConnectionManager {
 		ConnectionManager.post(url, params, responseHandler);
 	}
 	
+	public static void delete(String url,
+			JsonHttpResponseHandler responseHandler) {
+		RequestParams params = new RequestParams();
+		params.put("_method", "DELETE");
+		ConnectionManager.post(url, params, responseHandler);		
+	}
+	
 	private static String getAbsoluteUrl(String relativeUrl) {
 		return BASE_URL + relativeUrl;
 	}
@@ -96,5 +103,9 @@ public class ConnectionManager {
 		return img;
 	}
 
-		
+	public static void deleteIdea(
+			JsonHttpResponseHandler jsonHttpResponseHandler, int ideaId) {
+		String resource = "user/ideas/"+ideaId;
+		ConnectionManager.delete(resource, jsonHttpResponseHandler);
+	}		
 }

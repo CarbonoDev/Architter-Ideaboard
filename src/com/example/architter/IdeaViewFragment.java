@@ -73,6 +73,16 @@ public class IdeaViewFragment extends MyFragment  implements OnClickListener  {
 			startActivity(sendIntent);
 			break;
 		case R.id.deleteButton:
+			ConnectionManager.deleteIdea(new JsonHttpResponseHandler() {
+				@Override
+				public void onFailure(Throwable arg0) {
+					System.out.println(":(");
+				}
+				@Override
+				public void onSuccess(JSONObject response) {
+					getFragmentManager().popBackStack();
+				}
+			}, getIdeaId());
 			break;
 		case R.id.urlButton:
 			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
