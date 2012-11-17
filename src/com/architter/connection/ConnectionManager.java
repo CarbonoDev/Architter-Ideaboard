@@ -1,8 +1,10 @@
 package com.architter.connection;
 
 import android.app.Activity;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 
@@ -71,8 +73,13 @@ public class ConnectionManager {
 		String resource = "user/ideas/";
 		ConnectionManager.get(resource, params, responseHandler);
 	}
-	
-	
+
+	public static void enlighten(RequestParams params,
+			JsonHttpResponseHandler responseHandler) {
+		String resource = "user/ideas/"; 
+		ConnectionManager.post(resource, params, responseHandler);
+	}
+		
 	public static Activity getActivity() {
 		return activity;
 	}
@@ -80,4 +87,14 @@ public class ConnectionManager {
 	public static void setActivity(Activity activity) {
 		ConnectionManager.activity = activity;
 	}
+
+	public static String getImgUrl(String img) {
+		if(!img.startsWith("./ideaboardImages/")) {
+			img = "./ideaboardImages/" + img;
+		};
+		img = ASSET_BASE+img;
+		return img;
+	}
+
+		
 }

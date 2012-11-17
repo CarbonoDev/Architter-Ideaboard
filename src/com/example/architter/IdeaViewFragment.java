@@ -25,9 +25,6 @@ import android.view.View.OnClickListener;
 public class IdeaViewFragment extends MyFragment  implements OnClickListener  {
 	private int idea_id;
 	IdeaView idea;
-	
-	public IdeaViewFragment() {
-	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,7 +62,7 @@ public class IdeaViewFragment extends MyFragment  implements OnClickListener  {
 		switch (v.getId()) {
 		case R.id.archButton:
 			ArchThisFragment newFragment = new ArchThisFragment();
-			newFragment.setIdea_id(idea_id);
+			newFragment.setIdeaId(idea_id);
 			loadFragment(newFragment, this);
 			break;
 		case R.id.shareButton:

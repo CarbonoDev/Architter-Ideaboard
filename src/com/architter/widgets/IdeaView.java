@@ -9,7 +9,6 @@ import com.example.architter.R;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -65,18 +64,13 @@ public class IdeaView extends RelativeLayout {
 		try {
 			setId(response.getInt("id"));
 			String img = response.getString("img");
-			if(!img.startsWith("./ideaboardImages/")) {
-				img = "./ideaboardImages/" + img;
-			};
-			LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			img = ConnectionManager.ASSET_BASE + img;			
+			img =  ConnectionManager.getImgUrl(img);		
 			setMainImage(img);
 			setIdea_description(response.getString("descr"));
 			setIdea_description_tags(response.getString("tags"));
 			this.findViewById(R.id.loadingView).setVisibility(GONE);
 			this.findViewById(R.id.ideaContainer).setVisibility(VISIBLE);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

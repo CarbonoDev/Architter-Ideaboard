@@ -170,12 +170,9 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 				try {
 					JSONObject invention = ideas.getJSONObject(i);
 					String img = invention.getString("img");
-					if(!img.startsWith("./ideaboardImages/")) {
-						img = "./ideaboardImages/" + img;
-					};
 					LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 					idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, cont, false);
-					img = ConnectionManager.ASSET_BASE + img;
+					img = ConnectionManager.getImgUrl(img);
 					String description = invention.getString("descr");
 					String user = invention.getString("iduser");
 					int idea_id = invention.getInt("id");
@@ -235,7 +232,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 				IdeaWidget i = (IdeaWidget) v.getParent();
 				int id = i.getIdeaId();
 				ArchThisFragment newFragment = new ArchThisFragment();
-				newFragment.setIdea_id(id);
+				newFragment.setIdeaId(id);
 				fragment.loadFragment(newFragment);
 				break;
 			}

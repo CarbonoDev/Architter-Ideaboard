@@ -3,7 +3,6 @@
  */
 package com.example.architter;
 
-import com.architter.widgets.IdeaWidget;
 import com.architter.widgets.IdeasScroll;
 
 import android.os.Bundle;
@@ -79,22 +78,6 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 				furnitureButton.setSelected(false);
 				v.setSelected(true);
 				ideasScroll.loadIdeas("sets", true);
-				break;
-			}
-			case R.id.image: {
-				IdeaWidget i = (IdeaWidget) v.getParent();
-				int id = i.getIdeaId();
-				IdeaViewFragment newFragment = new IdeaViewFragment();
-				newFragment.setIdeaId(id);
-				loadFragment(newFragment, this);
-				break;
-			}
-			case R.id.archthis: {
-				IdeaWidget i = (IdeaWidget) v.getParent();
-				int id = i.getIdeaId();
-				ArchThisFragment newFragment = new ArchThisFragment();
-				newFragment.setIdea_id(id);
-				loadFragment(newFragment, this);
 				break;
 			}
 			default: {
