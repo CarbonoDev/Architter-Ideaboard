@@ -5,6 +5,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.architter.connection.ConnectionManager;
+import com.example.architter.ArchThisFragment;
+import com.example.architter.IdeaViewFragment;
+import com.example.architter.MyFragment;
 import com.example.architter.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -14,14 +17,16 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
+public class IdeasScroll extends RelativeLayout implements ScrollViewListener, OnClickListener {
 	ObservableScrollView scroll;
 	String tags = "";
 	String search = "";
 	int idUser = 0;
 	int page = 1;
-	private OnClickListener listener;
+	private MyFragment fragment;
 	public IdeasScroll(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		// TODO Auto-generated constructor stub
@@ -175,8 +180,8 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 					String user = invention.getString("iduser");
 					int idea_id = invention.getInt("id");
 					idea.setImage(img);
-					idea.setDescription(description+user);
-					idea.setListener(listener);
+					idea.setDescription(description);
+					idea.setListener(this);
 					idea.setIdeaId(idea_id);
 					switch (column) {
 					case 1:
@@ -211,8 +216,32 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 	        //do nothing
 	    }
 	}
+	
+	public void setFragment(MyFragment fragment) {
+		this.fragment = fragment;
+	}
 
-	public void setListener(OnClickListener listener) {
-		this.listener = listener;
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.image: {
+				IdeaWidget i = (IdeaWidget) v.getParent();
+				int id = i.getIdeaId();
+				IdeaViewFragment newFragment = new IdeaViewFragment();
+				newFragment.setIdeaId(id);
+				fragment.loadFragment(newFragment);
+				break;
+			}
+			case R.id.archthis: {
+				IdeaWidget i = (IdeaWidget) v.getParent();
+				int id = i.getIdeaId();
+				ArchThisFragment newFragment = new ArchThisFragment();
+				newFragment.setIdea_id(id);
+				fragment.loadFragment(newFragment);
+				break;
+			}
+			default: {
+				break;
+			}
+		}
 	}
 }

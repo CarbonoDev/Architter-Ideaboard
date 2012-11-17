@@ -22,4 +22,13 @@ public class MyFragment extends Fragment {
 		// Commit the transaction
 		transaction.commit();
 	}
+
+	public void loadFragment(Fragment newFragment) {
+		loadFragment(newFragment, this);		
+	}
+	
+	public void loadFragment(Fragment newFragment, int view) {
+		loadFragment(newFragment, this, view);		
+	}
+	
 }

@@ -35,6 +35,7 @@ public class ProfileFragment extends MyFragment implements OnClickListener {
 		setsButton.setOnClickListener(this);
 		projectsButton.setOnClickListener(this);
 		ideasScroll = (IdeasScroll) profileView.findViewById(R.id.scrollView1);
+		ideasScroll.setFragment(this);
 		ideasScroll.loadUserIdeas("", 200386, true);
 		return profileView;
 	}

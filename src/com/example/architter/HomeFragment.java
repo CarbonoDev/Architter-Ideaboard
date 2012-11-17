@@ -36,7 +36,7 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 		furnitureButton.setOnClickListener(this);
 		setsButton.setOnClickListener(this);
 		ideasScroll = (IdeasScroll) homeView.findViewById(R.id.scrollView1);
-		ideasScroll.setListener(this);
+		ideasScroll.setFragment(this);
 		return homeView;
 	}
 

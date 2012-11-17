@@ -34,6 +34,7 @@ public class TagsFragment extends MyFragment implements OnClickListener {
 		interiorButton.setOnClickListener(this);
 		furnitureButton.setOnClickListener(this);
 		ideasScroll = (IdeasScroll) tagsView.findViewById(R.id.scrollView1);
+		ideasScroll.setFragment(this);
 		ideasScroll.loadUserIdeas("architecture", 200386, true);
 		return tagsView;
 	}

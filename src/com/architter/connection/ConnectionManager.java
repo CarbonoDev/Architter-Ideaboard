@@ -68,7 +68,7 @@ public class ConnectionManager {
 		ConnectionManager.get(resource, params, responseHandler);
 	}
 	public static void getUserIdeas(RequestParams params, int idUser, AsyncHttpResponseHandler responseHandler) {
-		String resource = "users/ideas/"+idUser;
+		String resource = "user/ideas/";
 		ConnectionManager.get(resource, params, responseHandler);
 	}
 	
