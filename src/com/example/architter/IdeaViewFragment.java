@@ -3,7 +3,12 @@
  */
 package com.example.architter;
 
+import org.json.JSONObject;
+
+import com.architter.connection.ConnectionManager;
 import com.architter.widgets.IdeaView;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -19,32 +24,41 @@ import android.view.View.OnClickListener;
  */
 public class IdeaViewFragment extends MyFragment  implements OnClickListener  {
 	private int idea_id;
-	private String main_image;
+	IdeaView idea;
 	
 	public IdeaViewFragment() {
-		this.setIdea_id(0);
-		loadData();
-	}
-
-	private void loadData() {
-		main_image = "http://www.architter.com/images/KUU_black_BASIC_3.jpg";
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		IdeaView idea = (IdeaView) inflater.inflate(R.layout.idea_view, container, false);
+		idea = (IdeaView) inflater.inflate(R.layout.idea_view, container, false);
 		idea.setListener(this);
-		idea.setMainImage(main_image);
 		return idea;
 	}
 
-	public int getIdea_id() {
+	public int getIdeaId() {
 		return idea_id;
 	}
 
-	public void setIdea_id(int idea_id) {
+	public void setIdeaId(int idea_id) {
 		this.idea_id = idea_id;
+		loadIdea();
+	}
+
+	private void loadIdea() {
+		RequestParams params = new RequestParams();
+ 		ConnectionManager.getIdea(params, new  JsonHttpResponseHandler() {
+			@Override
+			public void onFailure(Throwable arg0) {
+				System.out.println(":(");
+			}
+			@Override
+			public void onSuccess(JSONObject response) {
+					System.out.println("idea loaded");
+					idea.loadIdea(response);
+			}
+		}, getIdeaId());
 	}
 
 	public void onClick(View v) {

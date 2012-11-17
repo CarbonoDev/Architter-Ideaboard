@@ -43,13 +43,13 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 		inflate(getContext(), R.layout.two_column_scroll, this);
 		init();
 	}
-	
+
 	private void init() {
 		RelativeLayout loading = (RelativeLayout) this.findViewById(R.id.loadingView);
 		AnimatedView loading_gif = new AnimatedView(loading.getContext());
 		loading_gif.loadDrawable(R.drawable.loading_architter);
 		loading.addView(loading_gif);
-		
+
 		scroll = (ObservableScrollView) this.findViewById(R.id.ideasScroll);
 		scroll.setScrollViewListener(this);
 	}
@@ -129,9 +129,9 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 				findViewById(R.id.loadingView).setVisibility(GONE);
 				loadElements(ideas);
 			}
-		});	
+		});
 	}
-	
+
 	public void loadUserIdeas() {
 		RequestParams params = new RequestParams();
 		params.put("page", ""+page);
@@ -147,10 +147,10 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 				System.out.println("loaded");
 				loadElements(ideas);
 			}
-		});		
+		});
 	}
-	
-	
+
+
 	public void loadElements(JSONArray ideas){
 		LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
 		LinearLayout column2 = (LinearLayout) this.findViewById(R.id.linear3);
@@ -173,9 +173,11 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 					img = ConnectionManager.ASSET_BASE + img;
 					String description = invention.getString("descr");
 					String user = invention.getString("iduser");
+					int idea_id = invention.getInt("id");
 					idea.setImage(img);
 					idea.setDescription(description+user);
 					idea.setListener(listener);
+					idea.setIdeaId(idea_id);
 					switch (column) {
 					case 1:
 						column1.addView(idea);
@@ -187,13 +189,13 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 					default:
 						column = 1;
 						break;
-					}				
+					}
 					page++;
 				} catch (JSONException e) {
 					e.printStackTrace();
 					break;
 				}
-				
+
 			}
 		}
 	}
@@ -207,7 +209,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener {
 	    }
 	    else {
 	        //do nothing
-	    }		
+	    }
 	}
 
 	public void setListener(OnClickListener listener) {

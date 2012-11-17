@@ -85,7 +85,7 @@ public class HomeFragment extends MyFragment implements OnClickListener {
 				IdeaWidget i = (IdeaWidget) v.getParent();
 				int id = i.getIdeaId();
 				IdeaViewFragment newFragment = new IdeaViewFragment();
-				newFragment.setIdea_id(id);
+				newFragment.setIdeaId(id);
 				loadFragment(newFragment, this);
 				break;
 			}

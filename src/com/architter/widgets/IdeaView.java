@@ -1,10 +1,15 @@
 package com.architter.widgets;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.androidhive.imagefromurl.ImageLoader;
+import com.architter.connection.ConnectionManager;
 import com.example.architter.R;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -19,6 +24,7 @@ public class IdeaView extends RelativeLayout {
 	private ImageButton urlButton;
 	private TextView idea_description;
 	private TextView idea_description_tags;
+	private int idea_id;
 	
 	public IdeaView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -28,9 +34,15 @@ public class IdeaView extends RelativeLayout {
 	protected void onFinishInflate() {
 		super.onFinishInflate();
 		//((Activity)getContext()).getLayoutInflater().inflate(R.layout.idea_component, this);
+		init();
 		setupViewItems();
 	}
-	
+	private void init() {
+		RelativeLayout loading = (RelativeLayout) this.findViewById(R.id.loadingView);
+		AnimatedView loading_gif = new AnimatedView(loading.getContext());
+		loading_gif.loadDrawable(R.drawable.loading_architter);
+		loading.addView(loading_gif);
+	}
 	private void setupViewItems() {
 		mainImage = (ImageView) findViewById(R.id.mainImage);
 		shareButton = (ImageButton) findViewById(R.id.shareButton);
@@ -42,9 +54,33 @@ public class IdeaView extends RelativeLayout {
 	}
 	
 	public int getIdeaId() {
-		return 0;
+		return idea_id;
 	}
 	
+	public void setIdeaId(int idea_id) {
+		this.idea_id = idea_id;
+	}
+	
+	public void loadIdea(JSONObject response) {
+		try {
+			setId(response.getInt("id"));
+			String img = response.getString("img");
+			if(!img.startsWith("./ideaboardImages/")) {
+				img = "./ideaboardImages/" + img;
+			};
+			LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			img = ConnectionManager.ASSET_BASE + img;			
+			setMainImage(img);
+			setIdea_description(response.getString("descr"));
+			setIdea_description_tags(response.getString("tags"));
+			this.findViewById(R.id.loadingView).setVisibility(GONE);
+			this.findViewById(R.id.ideaContainer).setVisibility(VISIBLE);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public void setMainImage(String imageUrl) {
         
         // Loader image - will be shown before loading image

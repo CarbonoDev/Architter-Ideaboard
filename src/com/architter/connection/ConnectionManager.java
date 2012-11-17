@@ -1,7 +1,6 @@
 package com.architter.connection;
 
 import android.app.Activity;
-
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.PersistentCookieStore;
@@ -59,6 +58,11 @@ public class ConnectionManager {
 		});
 	}
 
+	public static void getIdea(RequestParams params, AsyncHttpResponseHandler responseHandler, int id) {
+		String resource = "ideas/"+id;
+		ConnectionManager.get(resource, params, responseHandler);		
+	}
+	
 	public static void getIdeas(RequestParams params, AsyncHttpResponseHandler responseHandler) {
 		String resource = "ideas";
 		ConnectionManager.get(resource, params, responseHandler);

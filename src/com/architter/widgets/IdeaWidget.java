@@ -15,6 +15,7 @@ public class IdeaWidget extends LinearLayout {
 	private ImageView image;
 	private TextView description;
 	private ImageButton archthis;
+	private TextView idea_id;
 	
 	public IdeaWidget(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -32,12 +33,17 @@ public class IdeaWidget extends LinearLayout {
 	
 	public void setupViewItems() {
 		description = (TextView) findViewById(R.id.description);
+		idea_id = (TextView) findViewById(R.id.idea_id);
 		image = (ImageView) findViewById(R.id.image);
 		archthis = (ImageButton) findViewById(R.id.archthis);
 	}
 	
+	public void setIdeaId(int idea_id) {
+		this.idea_id.setText(""+idea_id);
+	}
+	
 	public int getIdeaId() {
-		return 0;
+		return Integer.parseInt((String)idea_id.getText());
 	}
 	
 	
