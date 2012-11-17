@@ -68,6 +68,13 @@ public class IdeaView extends RelativeLayout {
 			setMainImage(img);
 			setIdea_description(response.getString("descr"));
 			setIdea_description_tags(response.getString("tags"));
+			if(response.getBoolean("user_has")) {
+				findViewById(R.id.archButton).setVisibility(GONE);
+				findViewById(R.id.deleteButton).setVisibility(VISIBLE);
+			} else {
+				findViewById(R.id.archButton).setVisibility(VISIBLE);
+				findViewById(R.id.deleteButton).setVisibility(GONE);				
+			}
 			this.findViewById(R.id.loadingView).setVisibility(GONE);
 			this.findViewById(R.id.ideaContainer).setVisibility(VISIBLE);
 		} catch (JSONException e) {

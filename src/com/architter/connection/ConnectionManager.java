@@ -69,14 +69,14 @@ public class ConnectionManager {
 		String resource = "ideas";
 		ConnectionManager.get(resource, params, responseHandler);
 	}
-	public static void getUserIdeas(RequestParams params, int idUser, AsyncHttpResponseHandler responseHandler) {
-		String resource = "user/ideas/";
+	public static void getUserIdeas(RequestParams params, AsyncHttpResponseHandler responseHandler) {
+		String resource = "user/ideas";
 		ConnectionManager.get(resource, params, responseHandler);
 	}
 
 	public static void enlighten(RequestParams params,
 			JsonHttpResponseHandler responseHandler) {
-		String resource = "user/ideas/"; 
+		String resource = "user/ideas"; 
 		ConnectionManager.post(resource, params, responseHandler);
 	}
 		

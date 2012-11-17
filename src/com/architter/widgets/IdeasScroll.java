@@ -66,14 +66,12 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 		this.search = search;
 		loadIdeas();
 	}
-	public void loadUserIdeas(String tags, int idUser) {
+	public void loadUserIdeas(String tags) {
 		this.tags = tags;
-		this.idUser = idUser;
 		loadUserIdeas();
 	}
-	public void searchUserIdeas(String search, int idUser) {
+	public void searchUserIdeas(String search) {
 		this.search = search;
-		this.idUser = idUser;
 		loadUserIdeas();
 	}
 	public void loadIdeas(String tags, boolean erase) {
@@ -97,7 +95,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 		}
 		searchIdeas(search);
 	}
-	public void loadUserIdeas(String tags, int idUser, boolean erase) {
+	public void loadUserIdeas(String tags, boolean erase) {
 		if(erase) {
 			LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
 			LinearLayout column2 = (LinearLayout) this.findViewById(R.id.linear3);
@@ -105,9 +103,9 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 			column2.removeAllViews();
 			page = 1;
 		}
-		loadUserIdeas(tags, idUser);
+		loadUserIdeas(tags);
 	}
-	public void searchUserIdeas(String search, int idUser, boolean erase) {
+	public void searchUserIdeas(String search, boolean erase) {
 		if(erase) {
 			LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
 			LinearLayout column2 = (LinearLayout) this.findViewById(R.id.linear3);
@@ -115,7 +113,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 			column2.removeAllViews();
 			page = 1;
 		}
-		searchUserIdeas(search, idUser);
+		searchUserIdeas(search);
 	}
 
 	public void loadIdeas() {
@@ -142,7 +140,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 		params.put("page", ""+page);
 		params.put("tags", tags);
 		params.put("search", search);
-		ConnectionManager.getUserIdeas(params, this.idUser, new  JsonHttpResponseHandler() {
+		ConnectionManager.getUserIdeas(params, new  JsonHttpResponseHandler() {
 			@Override
 			public void onFailure(Throwable arg0) {
 				System.out.println(":(");
@@ -176,10 +174,12 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 					String description = invention.getString("descr");
 					String user = invention.getString("iduser");
 					int idea_id = invention.getInt("id");
+					boolean user_has = invention.getBoolean("user_has");
 					idea.setImage(img);
 					idea.setDescription(description);
 					idea.setListener(this);
 					idea.setIdeaId(idea_id);
+					idea.userHas(user_has);
 					switch (column) {
 					case 1:
 						column1.addView(idea);

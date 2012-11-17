@@ -55,6 +55,14 @@ public class IdeaWidget extends LinearLayout {
 		return (String) description.getText();
 	}
 	
+	public void userHas(boolean user_has) {
+		if(user_has) {
+			findViewById(R.id.archthis).setVisibility(GONE);
+		} else {
+			findViewById(R.id.archthis).setVisibility(VISIBLE);
+		}
+	}
+	
 	public void setImage(String imageUrl) {
         
         // Loader image - will be shown before loading image

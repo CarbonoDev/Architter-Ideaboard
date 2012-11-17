@@ -35,7 +35,7 @@ public class TagsFragment extends MyFragment implements OnClickListener {
 		furnitureButton.setOnClickListener(this);
 		ideasScroll = (IdeasScroll) tagsView.findViewById(R.id.scrollView1);
 		ideasScroll.setFragment(this);
-		ideasScroll.loadUserIdeas("architecture", 200386, true);
+		ideasScroll.loadUserIdeas("architecture", true);
 		return tagsView;
 	}
 
@@ -45,21 +45,21 @@ public class TagsFragment extends MyFragment implements OnClickListener {
 				interiorButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				v.setSelected(true);
-				ideasScroll.loadUserIdeas("architecture", 200386, true);
+				ideasScroll.loadUserIdeas("architecture", true);
 				break;
 			}
 			case R.id.interiorButton: {
 				architectureButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				v.setSelected(true);
-				ideasScroll.loadUserIdeas("interior", 200386, true);
+				ideasScroll.loadUserIdeas("interior", true);
 				break;
 			}
 			case R.id.furnitureButton: {
 				architectureButton.setSelected(false);
 				interiorButton.setSelected(false);
 				v.setSelected(true);
-				ideasScroll.loadUserIdeas("furniture", 200386, true);
+				ideasScroll.loadUserIdeas("furniture", true);
 				break;
 			}
 			default: {
