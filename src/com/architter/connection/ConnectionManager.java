@@ -18,6 +18,7 @@ public class ConnectionManager {
 	public static String avatar = "";
 	private static Activity activity; 
 	private static AsyncHttpClient client = new AsyncHttpClient();
+	private static boolean available = true;
 
 	public static String getUserAvatar(){
 		return ConnectionManager.getUserAvatar(ConnectionManager.avatar);
@@ -35,14 +36,15 @@ public class ConnectionManager {
 
 	public static void get(String url, RequestParams params,
 		AsyncHttpResponseHandler responseHandler) {
-		PersistentCookieStore myCookieStore = new PersistentCookieStore(activity);
-		client.setCookieStore(myCookieStore);
-		String fullUrl = getAbsoluteUrl(url);
-		client.get(fullUrl, params, responseHandler);
+			PersistentCookieStore myCookieStore = new PersistentCookieStore(activity);
+			client.setCookieStore(myCookieStore);
+			String fullUrl = getAbsoluteUrl(url);
+			client.get(fullUrl, params, responseHandler);
 	}
 
 	public static void post(String url, RequestParams params,
 			AsyncHttpResponseHandler responseHandler) {
+		
 		PersistentCookieStore myCookieStore = new PersistentCookieStore(activity);
 		client.setCookieStore(myCookieStore);
 		client.post(getAbsoluteUrl(url), params, responseHandler);
@@ -103,6 +105,7 @@ public class ConnectionManager {
 	}
 
 	public static void setActivity(Activity activity) {
+		client.setTimeout(5);
 		ConnectionManager.activity = activity;
 	}
 
