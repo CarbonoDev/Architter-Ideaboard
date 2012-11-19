@@ -24,7 +24,7 @@ public class ConnectionManager {
 	}
 	
 	
-	private static String getUserAvatar(String avatar) {
+	public static String getUserAvatar(String avatar) {
 		if(avatar.startsWith("http")) {
 			return avatar;
 		} else {

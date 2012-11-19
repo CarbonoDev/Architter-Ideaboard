@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 public class IdeaWidget extends LinearLayout {
 	
-	private ImageView image;
+	private ImageView image, avatar;
 	private TextView via, username;
 	private ImageButton archthis;
 	private TextView idea_id;
@@ -38,6 +38,7 @@ public class IdeaWidget extends LinearLayout {
 		idea_id = (TextView) findViewById(R.id.idea_id);
 		image = (ImageView) findViewById(R.id.image);
 		archthis = (ImageButton) findViewById(R.id.archthis);
+		avatar = (ImageView) findViewById(R.id.profilePicture);
 	}
 	
 	public void setIdeaId(int idea_id) {
@@ -59,9 +60,9 @@ public class IdeaWidget extends LinearLayout {
 	
 	public void userHas(boolean user_has) {
 		if(user_has) {
-			findViewById(R.id.archthis).setVisibility(GONE);
+			findViewById(R.id.archThisButtonContainer).setVisibility(GONE);
 		} else {
-			findViewById(R.id.archthis).setVisibility(VISIBLE);
+			findViewById(R.id.archThisButtonContainer).setVisibility(VISIBLE);
 		}
 	}
 	
@@ -84,7 +85,7 @@ public class IdeaWidget extends LinearLayout {
 public void setUserPicture(String imageUrl) {
         imageUrl = ConnectionManager.getUserAvatar(imageUrl);
         // Loader image - will be shown before loading image
-        int loader = R.drawable.big_logo;        
+        int loader = R.drawable.profile_pic;        
         
         // ImageLoader class instance
         ImageLoader imgLoader = new ImageLoader(getContext());
@@ -94,7 +95,7 @@ public void setUserPicture(String imageUrl) {
         // url - image url to load
         // loader - loader image, will be displayed before getting image
         // image - ImageView 
-        imgLoader.DisplayImage(imageUrl, loader, image);
+        imgLoader.DisplayImage(imageUrl, loader, avatar);
 	}
 	
 	public void setArchthis(ImageButton imgb) {

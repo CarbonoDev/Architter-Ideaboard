@@ -21,14 +21,18 @@
             android:id="@+id/via"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/via"
             android:textColor="#ACACB4"
         	android:textSize="13sp"
+        	android:layout_centerVertical="true"
         	android:layout_marginLeft="8.5dp" 
         	android:layout_marginRight="3.5dp"/>
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" 
+            android:layout_alignBaseline="@id/via"
+            android:text="@string/username"
             android:textColor="#636370"
             android:textStyle="bold"
         	android:textSize="13sp" 
@@ -37,8 +41,8 @@
                 android:id="@+id/profilePicture"
                 android:layout_width="43.5dp"
                 android:layout_height="43.5dp"
-                android:layout_marginTop="7dp"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="5dp"
                 android:src="@drawable/profile_pic" />
         <TextView
@@ -52,7 +56,8 @@
         android:id="@+id/archThisButtonContainer"
         android:layout_width="match_parent"
         android:layout_height="41dp" 
-        android:layout_below="@id/detailsContainer" >
+        android:layout_below="@id/detailsContainer" 
+        android:background="#F8F8F8" >
 
     <ImageButton
         android:id="@+id/archthis"
@@ -60,7 +65,7 @@
         android:layout_marginTop="7.5dp"
         android:layout_marginBottom="7.5dp"
         android:contentDescription="@string/button_archthis"
-        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/arch_btn" />
     
     </RelativeLayout>
