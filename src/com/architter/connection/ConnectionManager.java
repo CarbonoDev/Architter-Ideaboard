@@ -12,8 +12,26 @@ public class ConnectionManager {
 
 	private static final String BASE_URL = "http://api.architter.com/";
 	public static final String ASSET_BASE = "http://www.architter.com/ideaboard/image.php?image=";
+	public static final String AVATAR_BASE = "http://www.architter.com/avatars/";
+	public static String username = "Username";
+	public static String realname = "Jhon Doe";
+	public static String avatar = "";
 	private static Activity activity; 
 	private static AsyncHttpClient client = new AsyncHttpClient();
+
+	public static String getUserAvatar(){
+		return ConnectionManager.getUserAvatar(ConnectionManager.avatar);
+	}
+	
+	
+	private static String getUserAvatar(String avatar) {
+		if(avatar.startsWith("http")) {
+			return avatar;
+		} else {
+			return ConnectionManager.AVATAR_BASE + avatar;
+		}
+	}
+
 
 	public static void get(String url, RequestParams params,
 		AsyncHttpResponseHandler responseHandler) {

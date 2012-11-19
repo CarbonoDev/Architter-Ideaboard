@@ -1,7 +1,5 @@
 package com.example.architter;
 
-import com.architter.connection.ConnectionManager;
-
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;

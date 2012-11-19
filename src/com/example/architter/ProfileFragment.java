@@ -3,6 +3,8 @@
  */
 package com.example.architter;
 
+import com.androidhive.imagefromurl.ImageLoader;
+import com.architter.connection.ConnectionManager;
 import com.architter.widgets.IdeasScroll;
 
 import android.content.Context;
@@ -16,6 +18,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
@@ -47,6 +50,27 @@ public class ProfileFragment extends MyFragment implements OnClickListener, OnEd
 		ideasScroll.loadUserIdeas("",true);
 		searchBar = (EditText) profileView.findViewById(R.id.profileSearchBar);
 		searchBar.setOnEditorActionListener(this);
+		TextView profile = (TextView) profileView.findViewById(R.id.profileUsername);
+		profile.setText(ConnectionManager.username);
+		profile = (TextView) profileView.findViewById(R.id.profileRealName);
+		profile.setText(ConnectionManager.realname);
+		ImageView mainImage = (ImageView) profileView.findViewById(R.id.profilePicture);
+        
+		if(!ConnectionManager.avatar.isEmpty()) {
+	        // Loader image - will be shown before loading image
+	        int loader = R.drawable.profile_pic;
+	        
+	        // ImageLoader class instance
+	        ImageLoader imgLoader = new ImageLoader(profileView.getContext());
+	        
+	        // whenever you want to load an image from url
+	        // call DisplayImage function
+	        // url - image url to load
+	        // loader - loader image, will be displayed before getting image
+	        // image - ImageView 
+	        imgLoader.DisplayImage(ConnectionManager.getUserAvatar(), loader, mainImage);
+		}
+        
 		return profileView;
 	}
 
