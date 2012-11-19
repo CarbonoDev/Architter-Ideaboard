@@ -17,6 +17,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -58,19 +59,29 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 		scroll = (ObservableScrollView) this.findViewById(R.id.ideasScroll);
 		scroll.setScrollViewListener(this);
 	}
+	
+	private void clean() {
+		this.tags = "";
+		this.search = "";
+	}
+	
 	public void loadIdeas(String tags) {
+		clean();
 		this.tags = tags;
 		loadIdeas();
 	}
 	public void searchIdeas(String search) {
+		clean();
 		this.search = search;
 		loadIdeas();
 	}
 	public void loadUserIdeas(String tags) {
+		clean();
 		this.tags = tags;
 		loadUserIdeas();
 	}
 	public void searchUserIdeas(String search) {
+		clean();
 		this.search = search;
 		loadUserIdeas();
 	}
@@ -125,6 +136,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 			@Override
 			public void onFailure(Throwable arg0) {
 				System.out.println(":(");
+				Toast.makeText(getContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
 			}
 			@Override
 			public void onSuccess(JSONArray ideas) {
@@ -144,6 +156,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 			@Override
 			public void onFailure(Throwable arg0) {
 				System.out.println(":(");
+				Toast.makeText(getContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
 			}
 			@Override
 			public void onSuccess(JSONArray ideas) {

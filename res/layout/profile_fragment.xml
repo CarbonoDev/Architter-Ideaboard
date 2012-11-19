@@ -4,16 +4,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+  <!-- android:layout_height="89.5dp" Va en userContainer   Este tamaño es para poder tener los botones -->
+  <!-- Quitar gone para agregar los botones en profile en sectionSeparator y profileButtonContainer -->
     <RelativeLayout
         android:id="@+id/userContainer"
         style="@style/TopContainer"
-        android:layout_height="89.5dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="7dp" >
 
         <RelativeLayout
             android:id="@+id/userDetails"
             android:layout_width="wrap_content"
             android:layout_height="56dp" >
+
+            <TextView
+                android:id="@+id/profileRealName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#595959"
+        		android:textSize="11.5sp"
+        		android:layout_marginTop="30dp"
+                android:layout_toRightOf="@+id/profilePicture"
+                android:text="real name" />
+
+            <ImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="43.5dp"
+                android:layout_height="43.5dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="8.5dp"
+                android:src="@drawable/profile_pic" />
+
+            <TextView
+                android:id="@+id/profileUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0042B0"
+        		android:textSize="15sp"
+        		android:layout_marginTop="11.5dp"
+                android:layout_toRightOf="@+id/profilePicture"
+                android:text="Username" />
+        
         </RelativeLayout>
 
         <ImageView
@@ -21,13 +53,15 @@
             style="@style/SectionSeparator"
             android:layout_height="1dp"
             android:layout_below="@+id/userDetails"
+            android:visibility="gone"
             android:src="@drawable/button_separator" />
 
         <RelativeLayout
             android:id="@+id/profileButtonContainer"
             android:layout_width="fill_parent"
             android:layout_height="29.5dp"
-            android:layout_below="@+id/sectionSeparator" >
+            android:layout_below="@+id/sectionSeparator"
+            android:visibility="gone" >
 
             <Button
                 android:id="@+id/ideasButton"
@@ -72,6 +106,7 @@
                 android:layout_width="110dp"
                 android:text="@string/button_projects" />
         </RelativeLayout>
+
     </RelativeLayout>
 
     <EditText
@@ -79,6 +114,12 @@
         style="@style/TopContainer"
         android:layout_height="38.5dp"
         android:layout_marginBottom="7dp"
+        android:hint="SEARCH YOUR PROFILE"
+        android:drawableRight="@drawable/search_icon"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
+        android:textColorHint="#919191"
+        android:textSize="11.5sp"
         android:background="@drawable/container_bg"
         android:layout_centerHorizontal="true"
         android:ems="10"
@@ -89,7 +130,7 @@
         <requestFocus />
     </EditText>
     
-     <com.architter.widgets.IdeasScroll
+	<com.architter.widgets.IdeasScroll
         android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

@@ -5,21 +5,29 @@ package com.example.architter;
 
 import com.architter.widgets.IdeasScroll;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 /**
  * @author Marco
  *
  */
-public class TagsFragment extends MyFragment implements OnClickListener {
+public class TagsFragment extends MyFragment implements OnClickListener, OnEditorActionListener {
 	
 	Button architectureButton, interiorButton, furnitureButton;
 	IdeasScroll ideasScroll;
+	EditText searchBar;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +44,8 @@ public class TagsFragment extends MyFragment implements OnClickListener {
 		ideasScroll = (IdeasScroll) tagsView.findViewById(R.id.scrollView1);
 		ideasScroll.setFragment(this);
 		ideasScroll.loadUserIdeas("architecture", true);
+		searchBar = (EditText) tagsView.findViewById(R.id.tagSearchBar);
+		searchBar.setOnEditorActionListener(this);
 		return tagsView;
 	}
 
@@ -66,5 +76,15 @@ public class TagsFragment extends MyFragment implements OnClickListener {
 				break;
 			}
 		}
+	}
+	
+	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		if (actionId == EditorInfo.IME_ACTION_DONE) {
+			InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            ideasScroll.searchUserIdeas(v.getText().toString(), true);
+            return true;	
+        }
+		return false;
 	}
 }
