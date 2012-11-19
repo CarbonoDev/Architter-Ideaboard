@@ -51,20 +51,13 @@ public class ConnectionManager {
 		return BASE_URL + relativeUrl;
 	}
 	
-	public static void logIn(){
-		ConnectionManager.post("auth/login", new AsyncHttpResponseHandler() {
-			@Override
-			public void onSuccess(String arg0) {
-				// TODO: Store user
-				System.out.println(arg0);
-			}
-			
-			@Override
-			public void onFailure(Throwable arg0) {
-				// TODO: Wrong user
-				System.out.println("Bad user");
-			}
-		});
+	public static void logIn(String user, String password, AsyncHttpResponseHandler responseHandler){
+		String resource = "auth/login";
+		RequestParams params = new RequestParams();
+		params.put("username", user);
+		params.put("password", password);
+		params.put("remember", "true");
+		ConnectionManager.post(resource, params, responseHandler);
 	}
 
 	public static void getIdea(RequestParams params, AsyncHttpResponseHandler responseHandler, int id) {

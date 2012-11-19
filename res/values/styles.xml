@@ -133,4 +133,12 @@
 				<item name="android:textColor">@color/textcolor_topcontainerbutton</item>
     </style>
     
+	<style name="LoginField">
+	    <item name="android:layout_width">290dp</item>
+	    <item name="android:layout_height">35dp</item>
+	    <item name="android:layout_marginTop">14dp</item>
+	    <item name="android:background">@android:color/transparent</item>
+	    <item name="android:layout_centerHorizontal">true</item>
+	</style>
+    
 </resources>

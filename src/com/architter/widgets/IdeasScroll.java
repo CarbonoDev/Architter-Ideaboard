@@ -185,7 +185,6 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 					idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, cont, false);
 					img = ConnectionManager.getImgUrl(img);
 					String description = invention.getString("descr");
-					String user = invention.getString("iduser");
 					int idea_id = invention.getInt("id");
 					boolean user_has = invention.getBoolean("user_has");
 					idea.setImage(img);
