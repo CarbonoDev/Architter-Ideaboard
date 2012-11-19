@@ -61,5 +61,7 @@
     <string name="button_projects">PROJECTS</string>
     <string name="button_ideas">IDEAS</string>
     <string name="title_activity_login">Login</string>
+    <string name="via">Via:</string>
+    <string name="username">Username</string>
 
 </resources>

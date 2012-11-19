@@ -184,11 +184,13 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 					LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 					idea = (IdeaWidget) inflater.inflate(R.layout.idea_component, cont, false);
 					img = ConnectionManager.getImgUrl(img);
-					String description = invention.getString("descr");
+					String username = invention.getString("username");
+					String avatar = invention.getString("avatar");
 					int idea_id = invention.getInt("id");
 					boolean user_has = invention.getBoolean("user_has");
 					idea.setImage(img);
-					idea.setDescription(description);
+					idea.setUsername(username);
+					idea.setUserPicture(avatar);
 					idea.setListener(this);
 					idea.setIdeaId(idea_id);
 					idea.userHas(user_has);
