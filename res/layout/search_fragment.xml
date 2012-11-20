@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--  Esto va en searchContainer para mostrar botones android:layout_height="89.5dp" -->
+<!-- Se quita el visibility gone de search button container para mostrar botones -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/containerSearchView"
     android:layout_width="match_parent"
@@ -7,7 +10,7 @@
     <RelativeLayout
         android:id="@+id/searchContainer"
         style="@style/TopContainer"
-        android:layout_height="89.5dp"
+        android:layout_height="55dp"
         android:layout_marginBottom="19dp" >
 
         <EditText
@@ -38,6 +41,7 @@
             android:id="@+id/searchButtonContainer"
             android:layout_width="fill_parent"
             android:layout_height="34.5dp"
+            android:visibility="gone"
             android:layout_below="@+id/sectionSeparator" >
 
             <Button

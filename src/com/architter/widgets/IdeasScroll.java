@@ -55,6 +55,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 		AnimatedView loading_gif = new AnimatedView(loading.getContext());
 		loading_gif.loadDrawable(R.drawable.loading_architter);
 		loading.addView(loading_gif);
+		findViewById(R.id.notFound).setVisibility(GONE);
 
 		scroll = (ObservableScrollView) this.findViewById(R.id.ideasScroll);
 		scroll.setScrollViewListener(this);
@@ -85,6 +86,17 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 		this.search = search;
 		loadUserIdeas();
 	}
+	public void loadTagsIdeas(String tags) {
+		clean();
+		this.tags = tags;
+		loadTagsIdeas();
+	}
+	public void searchTagsIdeas(String search) {
+		clean();
+		this.search = search;
+		loadTagsIdeas();
+	}
+	
 	public void loadIdeas(String tags, boolean erase) {
 		if(erase) {
 			LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
@@ -103,6 +115,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 			column1.removeAllViews();
 			column2.removeAllViews();
 			page = 1;
+			this.findViewById(R.id.loadingView).setVisibility(VISIBLE);
 		}
 		searchIdeas(search);
 	}
@@ -113,6 +126,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 			column1.removeAllViews();
 			column2.removeAllViews();
 			page = 1;
+			this.findViewById(R.id.loadingView).setVisibility(VISIBLE);
 		}
 		loadUserIdeas(tags);
 	}
@@ -123,24 +137,47 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 			column1.removeAllViews();
 			column2.removeAllViews();
 			page = 1;
+			this.findViewById(R.id.loadingView).setVisibility(VISIBLE);
 		}
 		searchUserIdeas(search);
 	}
+	public void loadTagsIdeas(String tags, boolean erase) {
+		if(erase) {
+			LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
+			LinearLayout column2 = (LinearLayout) this.findViewById(R.id.linear3);
+			column1.removeAllViews();
+			column2.removeAllViews();
+			page = 1;
+			this.findViewById(R.id.loadingView).setVisibility(VISIBLE);
+		}
+		loadTagsIdeas(tags);
+	}
+	public void searchTagsIdeas(String search, boolean erase) {
+		if(erase) {
+			LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
+			LinearLayout column2 = (LinearLayout) this.findViewById(R.id.linear3);
+			column1.removeAllViews();
+			column2.removeAllViews();
+			page = 1;
+			this.findViewById(R.id.loadingView).setVisibility(VISIBLE);
+		}
+		searchTagsIdeas(search);
+	}
+	
 
 	public void loadIdeas() {
 		RequestParams params = new RequestParams();
 		params.put("page", ""+page);
 		params.put("tags", tags);
 		params.put("search", search);
+		findViewById(R.id.notFound).setVisibility(GONE);
 		ConnectionManager.getIdeas(params, new  JsonHttpResponseHandler() {
 			@Override
 			public void onFailure(Throwable arg0) {
-				System.out.println(":(");
 				Toast.makeText(getContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
 			}
 			@Override
 			public void onSuccess(JSONArray ideas) {
-				System.out.println("loaded");
 				findViewById(R.id.loadingView).setVisibility(GONE);
 				loadElements(ideas);
 			}
@@ -152,15 +189,33 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 		params.put("page", ""+page);
 		params.put("tags", tags);
 		params.put("search", search);
+		findViewById(R.id.notFound).setVisibility(GONE);
 		ConnectionManager.getUserIdeas(params, new  JsonHttpResponseHandler() {
 			@Override
 			public void onFailure(Throwable arg0) {
-				System.out.println(":(");
 				Toast.makeText(getContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
 			}
 			@Override
 			public void onSuccess(JSONArray ideas) {
-				System.out.println("loaded");
+				findViewById(R.id.loadingView).setVisibility(GONE);
+				loadElements(ideas);
+			}
+		});
+	}
+	public void loadTagsIdeas() {
+		RequestParams params = new RequestParams();
+		params.put("page", ""+page);
+		params.put("tags", tags);
+		params.put("search", search);
+		findViewById(R.id.notFound).setVisibility(GONE);
+		ConnectionManager.getTagsIdeas(params, new  JsonHttpResponseHandler() {
+			@Override
+			public void onFailure(Throwable arg0) {
+				Toast.makeText(getContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
+			}
+			@Override
+			public void onSuccess(JSONArray ideas) {
+				findViewById(R.id.loadingView).setVisibility(GONE);
 				loadElements(ideas);
 			}
 		});

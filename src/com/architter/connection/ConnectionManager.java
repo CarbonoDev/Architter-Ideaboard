@@ -93,6 +93,10 @@ public class ConnectionManager {
 		String resource = "user/ideas";
 		ConnectionManager.get(resource, params, responseHandler);
 	}
+	public static void getTagsIdeas(RequestParams params, AsyncHttpResponseHandler responseHandler) {
+		String resource = "user/tags/ideas";
+		ConnectionManager.get(resource, params, responseHandler);
+	}
 
 	public static void enlighten(RequestParams params,
 			JsonHttpResponseHandler responseHandler) {

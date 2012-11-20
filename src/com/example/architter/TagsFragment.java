@@ -55,21 +55,21 @@ public class TagsFragment extends MyFragment implements OnClickListener, OnEdito
 				interiorButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				v.setSelected(true);
-				ideasScroll.loadUserIdeas("architecture", true);
+				ideasScroll.loadTagsIdeas("architecture", true);
 				break;
 			}
 			case R.id.interiorButton: {
 				architectureButton.setSelected(false);
 				furnitureButton.setSelected(false);
 				v.setSelected(true);
-				ideasScroll.loadUserIdeas("interior", true);
+				ideasScroll.loadTagsIdeas("interior", true);
 				break;
 			}
 			case R.id.furnitureButton: {
 				architectureButton.setSelected(false);
 				interiorButton.setSelected(false);
 				v.setSelected(true);
-				ideasScroll.loadUserIdeas("furniture", true);
+				ideasScroll.loadTagsIdeas("furniture", true);
 				break;
 			}
 			default: {
@@ -82,7 +82,7 @@ public class TagsFragment extends MyFragment implements OnClickListener, OnEdito
 		if (actionId == EditorInfo.IME_ACTION_DONE) {
 			InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-            ideasScroll.searchUserIdeas(v.getText().toString(), true);
+            ideasScroll.searchTagsIdeas(v.getText().toString(), true);
             return true;	
         }
 		return false;

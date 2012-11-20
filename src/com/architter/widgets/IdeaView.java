@@ -12,9 +12,10 @@ import android.util.AttributeSet;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class IdeaView extends RelativeLayout {
+public class IdeaView extends ScrollView {
 	
 	private ImageView mainImage;
 	private ImageButton shareButton;
@@ -23,6 +24,8 @@ public class IdeaView extends RelativeLayout {
 	private ImageButton urlButton;
 	private TextView idea_description;
 	private TextView idea_description_tags;
+	private TextView idea_username;
+	private ImageView profilePic;
 	private int idea_id;
 	
 	public IdeaView(Context context, AttributeSet attrs) {
@@ -50,6 +53,8 @@ public class IdeaView extends RelativeLayout {
 		urlButton = (ImageButton) findViewById(R.id.urlButton);
 		idea_description = (TextView) findViewById(R.id.idea_description);
 		idea_description_tags = (TextView) findViewById(R.id.idea_description_tags);
+		idea_username = (TextView) findViewById(R.id.idea_username);
+		profilePic = (ImageView) findViewById(R.id.profilePic);
 	}
 	
 	public int getIdeaId() {
@@ -68,6 +73,8 @@ public class IdeaView extends RelativeLayout {
 			setMainImage(img);
 			setIdea_description(response.getString("descr"));
 			setIdea_description_tags(response.getString("tags"));
+			setIdea_username(response.getString("username")); 
+			setProfilePic(response.getString("avatar"));
 			if(response.getBoolean("user_has")) {
 				findViewById(R.id.archButton).setVisibility(GONE);
 				findViewById(R.id.deleteButton).setVisibility(VISIBLE);
@@ -104,6 +111,26 @@ public class IdeaView extends RelativeLayout {
 
 	public void setIdea_description_tags(String idea_description_tags) {
 		this.idea_description_tags.setText(idea_description_tags);
+	}
+	
+	public void setIdea_username(String idea_username) {
+		this.idea_username.setText(idea_username);
+	}
+	
+	public void setProfilePic(String imageUrl) {
+        imageUrl = ConnectionManager.getUserAvatar(imageUrl);
+        // Loader image - will be shown before loading image
+        int loader = R.drawable.profile_pic;        
+        
+        // ImageLoader class instance
+        ImageLoader imgLoader = new ImageLoader(getContext());
+        
+        // whenever you want to load an image from url
+        // call DisplayImage function
+        // url - image url to load
+        // loader - loader image, will be displayed before getting image
+        // image - ImageView 
+        imgLoader.DisplayImage(imageUrl, loader, profilePic);
 	}
 
 	public void setListener(OnClickListener listener) {

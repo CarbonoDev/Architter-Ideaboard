@@ -4,152 +4,163 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
     <RelativeLayout
-        android:id="@+id/loadingView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </RelativeLayout>
+      	android:layout_width="match_parent"
+    	android:layout_height="wrap_content" 
+    	android:paddingBottom="10dp" >
 
+	    <RelativeLayout
+	        android:id="@+id/loadingView"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent" >
+	    </RelativeLayout>
+	
+	
+	    <LinearLayout
+	        android:id="@+id/ideaContainer"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/loadingView"
+	        android:visibility="gone"
+	        android:gravity="center"
+	        android:orientation="vertical" >
+	
+	        <com.architter.widgets.AutoImageView
+	            android:id="@+id/mainImage"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:adjustViewBounds="true"
+	            android:src="@drawable/prueba" />
+	
+	
+	        <LinearLayout
+	            android:id="@+id/viewOptions1"
+	            style="@style/InfoContainer"
+	            android:orientation="vertical" >
+	
+	            <RelativeLayout
+	                style="@style/ButtonsBackground"
+	                android:layout_width="fill_parent"
+	                android:layout_height="43.5dp" >
+	
+	                <ImageButton
+	                    android:id="@+id/shareButton"
+	                    style="@style/ImageButton"
+	                    android:layout_alignParentRight="true"
+	                    android:layout_centerVertical="true"
+	                    android:paddingRight="12.5dp"
+	                    android:paddingLeft="12.5dp"
+	                    android:actionProviderClass="android.widget.ShareActionProvider"
+	                    android:src="@drawable/share_icon" />
+	
+	                <ImageView
+	                    android:id="@+id/imageView2"
+	                    style="@style/ButtonSeparator"
+	                    android:layout_centerVertical="true"
+	                    android:layout_toLeftOf="@+id/shareButton"
+	                    android:src="@drawable/button_separator" />
+	
+	                <ImageButton
+	                    android:id="@+id/deleteButton"
+	                    style="@style/ImageButton"
+	                    android:layout_alignParentLeft="true"
+	                    android:layout_centerVertical="true"
+	                    android:layout_marginLeft="8dp"
+	                    android:src="@drawable/delete_btn" />
+	
+	                <ImageButton
+	                    android:id="@+id/archButton"
+	                    style="@style/ImageButton"
+	                    android:layout_centerHorizontal="true"
+	                    android:layout_centerVertical="true"
+	                    android:src="@drawable/arch_btn_selected" />
+	            </RelativeLayout>
+	
+	            <RelativeLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="match_parent"
+	                android:paddingTop="10dp"
+	                android:paddingBottom="10dp" >
+	
+	                <TextView
+	                    android:id="@+id/idea_description"
+	                    style="@style/IdeaDescriptionText"
+	                    android:layout_marginBottom="8dp"
+	                    android:text="@string/idea_description" />
+	
+	                <TextView
+	                    android:id="@+id/idea_description_tags"
+	                    style="@style/IdeaDescriptionTags"
+	                    android:layout_below="@+id/idea_description"
+	                    android:text="@string/idea_tags" />
+	            </RelativeLayout>
+	
+	            <RelativeLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="46.5dp" >
+	
+	                <ImageView
+	                    android:id="@+id/ImageView01"
+	                    style="@style/SectionSeparator"
+	                    android:layout_alignParentLeft="true"
+	                    android:layout_alignParentTop="true"
+	                    android:src="@drawable/button_separator" />
+	
+	                <ImageView
+	                    android:id="@+id/ImageView02"
+	                    style="@style/ButtonSeparator"
+	                    android:layout_alignParentLeft="false"
+	                    android:layout_alignParentTop="false"
+	                    android:layout_centerVertical="true"
+	                    android:layout_toLeftOf="@+id/urlButton"
+	                    android:src="@drawable/button_separator" />
+	
+	                <ImageButton
+	                    android:id="@+id/urlButton"
+	                    style="@style/ImageButton"
+	                    android:layout_alignParentLeft="false"
+	                    android:layout_alignParentRight="true"
+	                    android:layout_centerVertical="true"
+	                    android:paddingRight="12.5dp"
+	                    android:paddingLeft="12.5dp"
+	                    android:src="@drawable/url_icon" />
+	
+	                <ImageView
+	                    android:id="@+id/profilePic"
+	                    android:layout_width="38dp"
+	                    android:layout_height="38dp"
+	                    android:layout_alignParentLeft="true"
+	                    android:layout_centerVertical="true"
+	                    android:layout_marginLeft="16dp"
+	                    android:src="@drawable/profile_pic" />
+	
+	                <TextView
+	                    android:id="@+id/textView1"
+	                    style="@style/ArchiText"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:textColor="#ACACB4"
+	        			android:textSize="13sp"
+	                    android:layout_alignTop="@+id/profilePic"
+	                    android:layout_marginLeft="6dp"
+	                    android:layout_toRightOf="@+id/profilePic"
+	                    android:text="Via:" />
+	
+	                <TextView
+	                    android:id="@+id/idea_username"
+	                    style="@style/ArchiText"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:textColor="#636370"
+	            android:textStyle="bold"
+	        	android:textSize="13sp" 
+	                    android:layout_alignLeft="@+id/textView1"
+	                    android:layout_below="@id/textView1"
+	                    android:text="Username" />
+	            </RelativeLayout>
+	        </LinearLayout>
+	    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ideaContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/loadingView"
-        android:visibility="gone"
-        android:gravity="center"
-        android:orientation="vertical" >
-
-        <com.architter.widgets.AutoImageView
-            android:id="@+id/mainImage"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/prueba" />
-
-
-        <LinearLayout
-            android:id="@+id/viewOptions1"
-            style="@style/InfoContainer"
-            android:orientation="vertical" >
-
-            <RelativeLayout
-                style="@style/ButtonsBackground"
-                android:layout_width="fill_parent"
-                android:layout_height="43.5dp" >
-
-                <ImageButton
-                    android:id="@+id/shareButton"
-                    style="@style/ImageButton"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="14dp"
-                    android:actionProviderClass="android.widget.ShareActionProvider"
-                    android:src="@drawable/share_icon" />
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    style="@style/ButtonSeparator"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/shareButton"
-                    android:src="@drawable/button_separator" />
-
-                <ImageButton
-                    android:id="@+id/deleteButton"
-                    style="@style/ImageButton"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="8dp"
-                    android:src="@drawable/delete_btn" />
-
-                <ImageButton
-                    android:id="@+id/archButton"
-                    style="@style/ImageButton"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/arch_btn_selected" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:id="@+id/idea_description"
-                    style="@style/IdeaDescriptionText"
-                    android:text="@string/idea_description" />
-
-                <TextView
-                    android:id="@+id/idea_description_tags"
-                    style="@style/IdeaDescriptionTags"
-                    android:layout_below="@+id/idea_description"
-                    android:text="@string/idea_tags" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="46.5dp" >
-
-                <ImageView
-                    android:id="@+id/ImageView01"
-                    style="@style/SectionSeparator"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:src="@drawable/button_separator" />
-
-                <ImageView
-                    android:id="@+id/ImageView02"
-                    style="@style/ButtonSeparator"
-                    android:layout_alignParentLeft="false"
-                    android:layout_alignParentTop="false"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@+id/urlButton"
-                    android:src="@drawable/button_separator" />
-
-                <ImageButton
-                    android:id="@+id/urlButton"
-                    style="@style/ImageButton"
-                    android:layout_alignParentLeft="false"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="12.5dp"
-                    android:src="@drawable/url_icon" />
-
-                <ImageButton
-                    android:id="@+id/imageButton4"
-                    style="@style/ImageButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="16dp"
-                    android:src="@drawable/profile_pic" />
-
-                <TextView
-                    android:id="@+id/textView1"
-                    style="@style/ArchiText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/imageButton4"
-                    android:layout_marginLeft="6dp"
-                    android:layout_toRightOf="@+id/imageButton4"
-                    android:text="Via:"
-                    android:textColor="#acacb4" />
-
-                <TextView
-                    android:id="@+id/idea_username"
-                    style="@style/ArchiText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/textView1"
-                    android:layout_below="@+id/textView1"
-                    android:text="Username"
-                    android:textColor="#636370" />
-            </RelativeLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-<!-- </RelativeLayout> -->
+ </RelativeLayout> 
 
 </com.architter.widgets.IdeaView>

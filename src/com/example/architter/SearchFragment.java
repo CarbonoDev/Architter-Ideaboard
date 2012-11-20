@@ -31,8 +31,6 @@ public class SearchFragment extends MyFragment implements OnItemClickListener, O
 	
 	ListView tagsListView;
 	RelativeLayout containerView;
-//	ScrollView scrollView;
-//	LinearLayout ideaContainer, column1, column2;
 	String [] tagsArray;
 	Button imagesButton, setsButton;
 	IdeasScroll ideasScroll;
@@ -104,6 +102,7 @@ public class SearchFragment extends MyFragment implements OnItemClickListener, O
 	public void onBackPressed() {
 		tagsListView.setVisibility(View.VISIBLE);
 		ideasScroll.setVisibility(View.GONE);
+		searchBar.setText("");
 	}
 	
 }
