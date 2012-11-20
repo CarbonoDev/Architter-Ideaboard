@@ -24,7 +24,7 @@ public class MainActivity extends Activity {
         
         Tab tab = actionBar.newTab()
                 .setText("")
-                .setIcon(R.drawable.big_logo)
+                .setIcon(R.drawable.logo_small)
                 .setTabListener(new TabListener<HomeFragment>(
                         this, "home", HomeFragment.class));
         actionBar.addTab(tab);

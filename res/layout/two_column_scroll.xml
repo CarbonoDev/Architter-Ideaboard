@@ -39,14 +39,14 @@
 
             <LinearLayout
                 android:id="@+id/linear2"
-                android:layout_width="164dp"
+                android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linear3"
-                android:layout_width="164dp"
+                android:layout_width="169dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
             </LinearLayout>

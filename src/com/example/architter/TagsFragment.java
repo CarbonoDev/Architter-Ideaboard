@@ -50,6 +50,7 @@ public class TagsFragment extends MyFragment implements OnClickListener, OnEdito
 	}
 
 	public void onClick(View v) {
+		searchBar.setText("");
 		switch(v.getId()) {
 			case R.id.architectureButton: {
 				interiorButton.setSelected(false);
@@ -70,9 +71,6 @@ public class TagsFragment extends MyFragment implements OnClickListener, OnEdito
 				interiorButton.setSelected(false);
 				v.setSelected(true);
 				ideasScroll.loadTagsIdeas("furniture", true);
-				break;
-			}
-			default: {
 				break;
 			}
 		}
