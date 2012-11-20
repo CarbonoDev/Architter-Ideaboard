@@ -75,7 +75,8 @@
         android:id="@+id/shareLayout"
         style="@style/Container"
         android:layout_height="41.5dp"
-        android:layout_marginTop="11dp" >
+        android:layout_marginTop="11dp"
+	    android:visibility="gone" >
 
         <ImageView
             android:id="@+id/shareImage"

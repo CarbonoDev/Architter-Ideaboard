@@ -50,14 +50,16 @@
 	                    android:paddingRight="12.5dp"
 	                    android:paddingLeft="12.5dp"
 	                    android:actionProviderClass="android.widget.ShareActionProvider"
-	                    android:src="@drawable/share_icon" />
+	                    android:src="@drawable/share_icon"
+	                    android:visibility="gone" />
 	
 	                <ImageView
 	                    android:id="@+id/imageView2"
 	                    style="@style/ButtonSeparator"
 	                    android:layout_centerVertical="true"
 	                    android:layout_toLeftOf="@+id/shareButton"
-	                    android:src="@drawable/button_separator" />
+	                    android:src="@drawable/button_separator"
+	                    android:visibility="gone" />
 	
 	                <ImageButton
 	                    android:id="@+id/deleteButton"
@@ -112,7 +114,8 @@
 	                    android:layout_alignParentTop="false"
 	                    android:layout_centerVertical="true"
 	                    android:layout_toLeftOf="@+id/urlButton"
-	                    android:src="@drawable/button_separator" />
+	                    android:src="@drawable/button_separator"
+	                    android:visibility="gone" />
 	
 	                <ImageButton
 	                    android:id="@+id/urlButton"
@@ -122,7 +125,8 @@
 	                    android:layout_centerVertical="true"
 	                    android:paddingRight="12.5dp"
 	                    android:paddingLeft="12.5dp"
-	                    android:src="@drawable/url_icon" />
+	                    android:src="@drawable/url_icon"
+	                    android:visibility="gone" />
 	
 	                <ImageView
 	                    android:id="@+id/profilePic"
