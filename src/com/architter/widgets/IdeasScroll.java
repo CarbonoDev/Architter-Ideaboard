@@ -298,7 +298,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 				break;
 			}
 			case R.id.archthis: {
-				IdeaWidget i = (IdeaWidget) v.getParent();
+				IdeaWidget i = (IdeaWidget) v.getParent().getParent();
 				int id = i.getIdeaId();
 				ArchThisFragment newFragment = new ArchThisFragment();
 				newFragment.setIdeaId(id);

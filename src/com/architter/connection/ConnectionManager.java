@@ -115,7 +115,7 @@ public class ConnectionManager {
 	}
 
 	public static void setActivity(Activity activity) {
-		client.setTimeout(5);
+		client.setTimeout(5000);
 		ConnectionManager.activity = activity;
 	}
 

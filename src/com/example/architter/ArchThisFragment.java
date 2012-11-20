@@ -72,6 +72,10 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
 			params.put("description", view.getDescription());
 			ConnectionManager.enlighten(params, new JsonHttpResponseHandler() {
 				@Override
+				public void onFailure(Throwable arg0) {
+					
+				}
+				@Override
 				public void onSuccess(JSONObject arg0) {
 					getFragmentManager().popBackStack();
 				}
