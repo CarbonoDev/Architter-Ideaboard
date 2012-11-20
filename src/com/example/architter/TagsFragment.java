@@ -43,7 +43,7 @@ public class TagsFragment extends MyFragment implements OnClickListener, OnEdito
 		furnitureButton.setOnClickListener(this);
 		ideasScroll = (IdeasScroll) tagsView.findViewById(R.id.scrollView1);
 		ideasScroll.setFragment(this);
-		ideasScroll.loadUserIdeas("architecture", true);
+		ideasScroll.loadTagsIdeas("architecture", true);
 		searchBar = (EditText) tagsView.findViewById(R.id.tagSearchBar);
 		searchBar.setOnEditorActionListener(this);
 		return tagsView;
@@ -82,6 +82,9 @@ public class TagsFragment extends MyFragment implements OnClickListener, OnEdito
 		if (actionId == EditorInfo.IME_ACTION_DONE) {
 			InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            architectureButton.setSelected(false);
+            interiorButton.setSelected(false);
+			furnitureButton.setSelected(false);
             ideasScroll.searchTagsIdeas(v.getText().toString(), true);
             return true;	
         }
