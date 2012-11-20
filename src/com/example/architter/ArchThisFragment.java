@@ -7,12 +7,14 @@ import com.architter.widgets.ArchThisView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 
 public class ArchThisFragment extends MyFragment implements OnClickListener  {
 	private int idea_id;
@@ -52,6 +54,7 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
 	}
 
 	public void onClick(View v) {
+		InputMethodManager inputManager;
 		switch (v.getId()) {
 		case R.id.shareLayout:
 			Intent sendIntent = new Intent();
@@ -61,6 +64,9 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
 			startActivity(sendIntent);
 			break;
 		case R.id.saveButton:
+			inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE); 
+			inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
+               InputMethodManager.HIDE_NOT_ALWAYS);
 			RequestParams params = new RequestParams();
 			params.put("id", ""+idea_id);
 			params.put("description", view.getDescription());
@@ -72,6 +78,9 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
 			});
 			break;
 		case R.id.cancel:
+			inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE); 
+			inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
+               InputMethodManager.HIDE_NOT_ALWAYS);
 			getFragmentManager().popBackStack();
 			break;
 		default:
