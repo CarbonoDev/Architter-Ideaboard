@@ -34,13 +34,6 @@ public class Login extends Activity implements OnClickListener {
         findViewById(R.id.login_button).setOnClickListener(this);
         email = (EditText) findViewById(R.id.login_email);
         pwd = (EditText) findViewById(R.id.login_pwd);
-        if(savedInstanceState.getBoolean("logged_in", false)) {
-        	ConnectionManager.realname = savedInstanceState.getString("realname");
-        	ConnectionManager.username = savedInstanceState.getString("username");
-        	ConnectionManager.avatar = savedInstanceState.getString("avatar");
-        	Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-			startActivity(intent);
-        }
     }
     
 
