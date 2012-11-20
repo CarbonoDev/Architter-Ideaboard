@@ -29,12 +29,20 @@ public class Login extends Activity implements OnClickListener {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         //Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login);
         ConnectionManager.setActivity(this);
+        setContentView(R.layout.activity_login);
         findViewById(R.id.login_button).setOnClickListener(this);
         email = (EditText) findViewById(R.id.login_email);
         pwd = (EditText) findViewById(R.id.login_pwd);
+        if(savedInstanceState.getBoolean("logged_in", false)) {
+        	ConnectionManager.realname = savedInstanceState.getString("realname");
+        	ConnectionManager.username = savedInstanceState.getString("username");
+        	ConnectionManager.avatar = savedInstanceState.getString("avatar");
+        	Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+			startActivity(intent);
+        }
     }
+    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,6 +50,16 @@ public class Login extends Activity implements OnClickListener {
         return true;
     }
 
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+    	switch(item.getItemId()) {
+    		case R.id.menu_exit:
+    			finish();
+    			break;
+    	}
+		return true;
+    	
+    };
+    
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.login_button:

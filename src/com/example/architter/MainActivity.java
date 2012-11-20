@@ -1,5 +1,7 @@
 package com.example.architter;
 
+import com.architter.connection.ConnectionManager;
+
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -52,6 +54,20 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+    
+
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+    	switch(item.getItemId()) {
+    		case R.id.menu_exit:
+    			finish();
+    			break;
+    		case R.id.menu_logout:
+    			ConnectionManager.logOut();
+    			break;
+    	}
+		return true;
+    	
+    };
     
     @Override
     public void onBackPressed()

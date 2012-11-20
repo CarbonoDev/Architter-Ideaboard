@@ -79,6 +79,12 @@ public class ConnectionManager {
 		params.put("remember", "true");
 		ConnectionManager.post(resource, params, responseHandler);
 	}
+	
+	public static void logOut(){
+		String resource = "auth/logout";
+		RequestParams params = new RequestParams();
+		ConnectionManager.post(resource, params, new AsyncHttpResponseHandler());
+	}
 
 	public static void getIdea(RequestParams params, AsyncHttpResponseHandler responseHandler, int id) {
 		String resource = "ideas/"+id;
