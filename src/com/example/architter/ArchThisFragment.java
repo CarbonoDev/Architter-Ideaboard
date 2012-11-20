@@ -3,6 +3,7 @@ package com.example.architter;
 import org.json.JSONObject;
 
 import com.architter.connection.ConnectionManager;
+import com.architter.widgets.AnimatedView;
 import com.architter.widgets.ArchThisView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -15,17 +16,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.RelativeLayout;
 
 public class ArchThisFragment extends MyFragment implements OnClickListener  {
 	private int idea_id;
 	private String main_image;
 	private ArchThisView view;
+	private RelativeLayout loading;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		view = (ArchThisView) inflater.inflate(R.layout.arch_this, container, false);
 		view.setMainImage(main_image);
 		view.setListener(this);
+		loading = (RelativeLayout) view.findViewById(R.id.loadingView);
+		AnimatedView loading_gif = new AnimatedView(loading.getContext());
+		loading_gif.loadDrawable(R.drawable.loading_architter);
+		loading.addView(loading_gif);
 		return view;
 	}
 
@@ -67,6 +74,7 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
 			inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE); 
 			inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
                InputMethodManager.HIDE_NOT_ALWAYS);
+			loading.setVisibility(View.VISIBLE);
 			RequestParams params = new RequestParams();
 			params.put("id", ""+idea_id);
 			params.put("description", view.getDescription());
@@ -77,6 +85,7 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
 				}
 				@Override
 				public void onSuccess(JSONObject arg0) {
+					loading.setVisibility(View.GONE);
 					getFragmentManager().popBackStack();
 				}
 			});
