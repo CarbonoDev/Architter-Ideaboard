@@ -43,7 +43,7 @@ public class TagsFragment extends MyFragment implements OnClickListener, OnEdito
 		furnitureButton.setOnClickListener(this);
 		ideasScroll = (IdeasScroll) tagsView.findViewById(R.id.scrollView1);
 		ideasScroll.setFragment(this);
-		ideasScroll.loadUserIdeas("architecture", true);
+		ideasScroll.loadTagsIdeas("architecture", true);
 		searchBar = (EditText) tagsView.findViewById(R.id.tagSearchBar);
 		searchBar.setOnEditorActionListener(this);
 		return tagsView;

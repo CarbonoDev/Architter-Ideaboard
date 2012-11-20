@@ -57,8 +57,8 @@ public class Login extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.login_button:
-			String user = "user@example.com";//email.getText().toString();
-			String password = "secret"; //pwd.getText().toString();
+			String user = email.getText().toString();
+			String password = pwd.getText().toString();
 			if(user.isEmpty() || password.isEmpty()) {
 				Toast.makeText(getApplicationContext(), "Email and password cannot be empty.",Toast.LENGTH_LONG).show();
 			} else {

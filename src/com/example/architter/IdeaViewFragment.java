@@ -6,6 +6,7 @@ package com.example.architter;
 import org.json.JSONObject;
 
 import com.architter.connection.ConnectionManager;
+import com.architter.widgets.AnimatedView;
 import com.architter.widgets.IdeaView;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -17,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 /**
  * @author Marco
@@ -25,12 +28,19 @@ import android.view.View.OnClickListener;
 public class IdeaViewFragment extends MyFragment  implements OnClickListener  {
 	private int idea_id;
 	IdeaView idea;
+	RelativeLayout loading;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		idea = (IdeaView) inflater.inflate(R.layout.idea_view, container, false);
 		idea.setListener(this);
+		loading = (RelativeLayout) idea.findViewById(R.id.loadingView);
+		AnimatedView loading_gif = new AnimatedView(loading.getContext());
+		loading_gif.loadDrawable(R.drawable.loading_architter);
+		loading.addView(loading_gif);
+		
+		loadIdea();
 		return idea;
 	}
 
@@ -40,7 +50,6 @@ public class IdeaViewFragment extends MyFragment  implements OnClickListener  {
 
 	public void setIdeaId(int idea_id) {
 		this.idea_id = idea_id;
-		loadIdea();
 	}
 
 	private void loadIdea() {
@@ -48,11 +57,10 @@ public class IdeaViewFragment extends MyFragment  implements OnClickListener  {
  		ConnectionManager.getIdea(params, new  JsonHttpResponseHandler() {
 			@Override
 			public void onFailure(Throwable arg0) {
-				System.out.println(":(");
+				Toast.makeText(getActivity(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
 			}
 			@Override
 			public void onSuccess(JSONObject response) {
-					System.out.println("idea loaded");
 					idea.loadIdea(response);
 			}
 		}, getIdeaId());

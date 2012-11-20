@@ -12,10 +12,9 @@ import android.util.AttributeSet;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class IdeaView extends ScrollView {
+public class IdeaView extends RelativeLayout {
 	
 	private ImageView mainImage;
 	private ImageButton shareButton;
