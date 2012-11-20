@@ -60,12 +60,12 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 		scroll = (ObservableScrollView) this.findViewById(R.id.ideasScroll);
 		scroll.setScrollViewListener(this);
 	}
-	
+
 	private void clean() {
 		this.tags = "";
 		this.search = "";
 	}
-	
+
 	public void loadIdeas(String tags) {
 		clean();
 		this.tags = tags;
@@ -96,7 +96,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 		this.search = search;
 		loadTagsIdeas();
 	}
-	
+
 	public void loadIdeas(String tags, boolean erase) {
 		if(erase) {
 			LinearLayout column1 = (LinearLayout) this.findViewById(R.id.linear2);
@@ -163,7 +163,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 		}
 		searchTagsIdeas(search);
 	}
-	
+
 
 	public void loadIdeas() {
 		RequestParams params = new RequestParams();
@@ -175,11 +175,13 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 			@Override
 			public void onFailure(Throwable arg0) {
 				Toast.makeText(getContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
+				ConnectionManager.free();
 			}
 			@Override
 			public void onSuccess(JSONArray ideas) {
 				findViewById(R.id.loadingView).setVisibility(GONE);
 				loadElements(ideas);
+				ConnectionManager.free();
 			}
 		});
 	}
@@ -194,10 +196,12 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 			@Override
 			public void onFailure(Throwable arg0) {
 				Toast.makeText(getContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
+				ConnectionManager.free();
 			}
 			@Override
 			public void onSuccess(JSONArray ideas) {
 				findViewById(R.id.loadingView).setVisibility(GONE);
+				ConnectionManager.free();
 				loadElements(ideas);
 			}
 		});
@@ -212,10 +216,12 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 			@Override
 			public void onFailure(Throwable arg0) {
 				Toast.makeText(getContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
+				ConnectionManager.free();
 			}
 			@Override
 			public void onSuccess(JSONArray ideas) {
 				findViewById(R.id.loadingView).setVisibility(GONE);
+				ConnectionManager.free();
 				loadElements(ideas);
 			}
 		});
@@ -282,7 +288,7 @@ public class IdeasScroll extends RelativeLayout implements ScrollViewListener, O
 	        //do nothing
 	    }
 	}
-	
+
 	public void setFragment(MyFragment fragment) {
 		this.fragment = fragment;
 	}

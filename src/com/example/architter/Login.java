@@ -22,7 +22,7 @@ public class Login extends Activity implements OnClickListener {
 	private EditText email;
 	private EditText pwd;
 	private boolean logging_in = false;
-	
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class Login extends Activity implements OnClickListener {
         email = (EditText) findViewById(R.id.login_email);
         pwd = (EditText) findViewById(R.id.login_pwd);
     }
-    
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,9 +51,9 @@ public class Login extends Activity implements OnClickListener {
     			break;
     	}
 		return true;
-    	
+
     };
-    
+
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.login_button:
@@ -68,11 +68,13 @@ public class Login extends Activity implements OnClickListener {
 					ConnectionManager.logIn(user, password, new JsonHttpResponseHandler() {
 						@Override
 						public void onFailure(Throwable arg0) {
+							ConnectionManager.free();
 							logging_in = false;
 							Toast.makeText(getApplicationContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
 						}
 						@Override
 						public void onSuccess(JSONObject response) {
+							ConnectionManager.free();
 							try {
 								logging_in = false;
 								Toast.makeText(getApplicationContext(), response.getString("mod"), Toast.LENGTH_LONG).show();
@@ -95,8 +97,8 @@ public class Login extends Activity implements OnClickListener {
 
 		default:
 			break;
-		}		
+		}
 	}
-    
-    
+
+
 }

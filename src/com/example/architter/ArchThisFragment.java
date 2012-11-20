@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class ArchThisFragment extends MyFragment implements OnClickListener  {
 	private int idea_id;
@@ -50,12 +51,13 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
  		ConnectionManager.getIdea(params, new  JsonHttpResponseHandler() {
 			@Override
 			public void onFailure(Throwable arg0) {
-				System.out.println(":(");
+				Toast.makeText(getContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
+				ConnectionManager.free();
 			}
 			@Override
 			public void onSuccess(JSONObject response) {
-					System.out.println("idea loaded");
-					view.loadIdea(response);
+				ConnectionManager.free();
+				view.loadIdea(response);
 			}
 		}, getIdeaId());
 	}
@@ -71,7 +73,7 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
 			startActivity(sendIntent);
 			break;
 		case R.id.saveButton:
-			inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE); 
+			inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 			inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
                InputMethodManager.HIDE_NOT_ALWAYS);
 			loading.setVisibility(View.VISIBLE);
@@ -81,17 +83,19 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
 			ConnectionManager.enlighten(params, new JsonHttpResponseHandler() {
 				@Override
 				public void onFailure(Throwable arg0) {
-					
+					Toast.makeText(getActivity(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
+					ConnectionManager.free();
 				}
 				@Override
 				public void onSuccess(JSONObject arg0) {
 					loading.setVisibility(View.GONE);
 					getFragmentManager().popBackStack();
+					ConnectionManager.free();
 				}
 			});
 			break;
 		case R.id.cancel:
-			inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE); 
+			inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 			inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
                InputMethodManager.HIDE_NOT_ALWAYS);
 			getFragmentManager().popBackStack();
