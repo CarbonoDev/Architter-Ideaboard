@@ -1,6 +1,7 @@
 package com.example.architter;
 
 import com.architter.connection.ConnectionManager;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import android.os.Bundle;
 import android.app.ActionBar;
@@ -9,6 +10,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.view.Menu;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -62,12 +64,29 @@ public class MainActivity extends Activity {
     			finish();
     			break;
     		case R.id.menu_logout:
-    			ConnectionManager.logOut();
+    			ConnectionManager.logOut(new AsyncHttpResponseHandler() {
+    				@Override
+    				public void onSuccess(String arg0) {
+    					// TODO Auto-generated method stub
+    					Toast.makeText(getApplicationContext(), "You have been logged out.",Toast.LENGTH_LONG).show();
+    				}
+    			});
+    			logOut();
     			break;
     	}
 		return true;
     	
     };
+    
+    public void finish() {
+    	setResult(2);
+    	super.finish();
+    }
+    
+    public void logOut() {
+    	setResult(1);
+    	super.finish();
+    }
     
     @Override
     public void onBackPressed()

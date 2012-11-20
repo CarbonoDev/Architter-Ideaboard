@@ -68,13 +68,11 @@ public class Login extends Activity implements OnClickListener {
 					ConnectionManager.logIn(user, password, new JsonHttpResponseHandler() {
 						@Override
 						public void onFailure(Throwable arg0) {
-							ConnectionManager.free();
 							logging_in = false;
 							Toast.makeText(getApplicationContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
 						}
 						@Override
 						public void onSuccess(JSONObject response) {
-							ConnectionManager.free();
 							try {
 								logging_in = false;
 								Toast.makeText(getApplicationContext(), response.getString("mod"), Toast.LENGTH_LONG).show();
@@ -83,7 +81,7 @@ public class Login extends Activity implements OnClickListener {
 									ConnectionManager.username = response.getString("username");
 									ConnectionManager.realname = response.getString("realname");
 									Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-									startActivity(intent);
+									startActivityForResult(intent, 1);
 								}
 							} catch (JSONException e) {
 								// TODO Auto-generated catch block
@@ -98,6 +96,13 @@ public class Login extends Activity implements OnClickListener {
 		default:
 			break;
 		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if(resultCode==2){
+	        finish();
+	    }
 	}
 
 

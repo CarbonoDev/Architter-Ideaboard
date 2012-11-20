@@ -18,12 +18,6 @@ public class ConnectionManager {
 	public static String avatar = "";
 	private static Activity activity; 
 	private static AsyncHttpClient client = new AsyncHttpClient();
-	private static boolean available = true;
-
-	
-	public static void free() {
-		available = true;
-	}
 	
 	public static String getUserAvatar(){
 		return ConnectionManager.getUserAvatar(ConnectionManager.avatar);
@@ -41,23 +35,18 @@ public class ConnectionManager {
 
 	public static void get(String url, RequestParams params,
 		AsyncHttpResponseHandler responseHandler) {
-		if(available) {
-			available = false;
 			PersistentCookieStore myCookieStore = new PersistentCookieStore(activity);
 			client.setCookieStore(myCookieStore);
 			String fullUrl = getAbsoluteUrl(url);
-			client.get(fullUrl, params, responseHandler);
-		}
+			client.get(fullUrl, params, responseHandler);		
 	}
 
 	public static void post(String url, RequestParams params,
 			AsyncHttpResponseHandler responseHandler) {
-		if(available) {
-			available = false;
 			PersistentCookieStore myCookieStore = new PersistentCookieStore(activity);
 			client.setCookieStore(myCookieStore);
 			client.post(getAbsoluteUrl(url), params, responseHandler);
-		}
+		
 	}
 
 	public static void get(String url, AsyncHttpResponseHandler responseHandler) {
@@ -90,11 +79,10 @@ public class ConnectionManager {
 		ConnectionManager.post(resource, params, responseHandler);
 	}
 	
-	public static void logOut(){
+	public static void logOut(AsyncHttpResponseHandler response){
 		String resource = "auth/logout";
 		RequestParams params = new RequestParams();
-		ConnectionManager.post(resource, params, new AsyncHttpResponseHandler());
-		ConnectionManager.free();
+		ConnectionManager.post(resource, params, response);
 	}
 
 	public static void getIdea(RequestParams params, AsyncHttpResponseHandler responseHandler, int id) {

@@ -24,6 +24,7 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
 	private String main_image;
 	private ArchThisView view;
 	private RelativeLayout loading;
+	private boolean saving = false;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -51,12 +52,10 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
  		ConnectionManager.getIdea(params, new  JsonHttpResponseHandler() {
 			@Override
 			public void onFailure(Throwable arg0) {
-				Toast.makeText(getContext(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
-				ConnectionManager.free();
+				Toast.makeText(getActivity(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
 			}
 			@Override
 			public void onSuccess(JSONObject response) {
-				ConnectionManager.free();
 				view.loadIdea(response);
 			}
 		}, getIdeaId());
@@ -80,19 +79,22 @@ public class ArchThisFragment extends MyFragment implements OnClickListener  {
 			RequestParams params = new RequestParams();
 			params.put("id", ""+idea_id);
 			params.put("description", view.getDescription());
+			if(!saving ) {
+				saving = true;
 			ConnectionManager.enlighten(params, new JsonHttpResponseHandler() {
 				@Override
 				public void onFailure(Throwable arg0) {
+					saving = false;
 					Toast.makeText(getActivity(), "Network error, please try again later.",Toast.LENGTH_LONG).show();
-					ConnectionManager.free();
 				}
 				@Override
 				public void onSuccess(JSONObject arg0) {
 					loading.setVisibility(View.GONE);
+					saving = false;
 					getFragmentManager().popBackStack();
-					ConnectionManager.free();
 				}
 			});
+			}
 			break;
 		case R.id.cancel:
 			inputManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
