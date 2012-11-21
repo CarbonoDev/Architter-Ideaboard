@@ -2,6 +2,7 @@ package com.example.architter;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import com.architter.R;
 
 public class MyFragment extends Fragment {
 

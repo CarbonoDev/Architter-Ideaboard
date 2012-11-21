@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.architter.R;
 import com.architter.connection.ConnectionManager;
 import com.loopj.android.http.JsonHttpResponseHandler;
 

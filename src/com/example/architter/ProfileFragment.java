@@ -4,6 +4,7 @@
 package com.example.architter;
 
 import com.androidhive.imagefromurl.ImageLoader;
+import com.architter.R;
 import com.architter.connection.ConnectionManager;
 import com.architter.widgets.IdeasScroll;
 

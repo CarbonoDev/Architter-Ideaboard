@@ -5,6 +5,7 @@ package com.example.architter;
 
 import org.json.JSONObject;
 
+import com.architter.R;
 import com.architter.connection.ConnectionManager;
 import com.architter.widgets.AnimatedView;
 import com.architter.widgets.IdeaView;

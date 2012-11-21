@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 import com.androidhive.imagefromurl.ImageLoader;
 import com.architter.connection.ConnectionManager;
-import com.example.architter.R;
+import com.architter.R;
 
 import android.content.Context;
 import android.util.AttributeSet;

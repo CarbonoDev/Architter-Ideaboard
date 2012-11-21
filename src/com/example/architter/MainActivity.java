@@ -1,5 +1,6 @@
 package com.example.architter;
 
+import com.architter.R;
 import com.architter.connection.ConnectionManager;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 

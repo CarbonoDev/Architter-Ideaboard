@@ -3,6 +3,7 @@
  */
 package com.example.architter;
 
+import com.architter.R;
 import com.architter.widgets.IdeasScroll;
 
 import android.os.Bundle;

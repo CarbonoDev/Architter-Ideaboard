@@ -8,7 +8,7 @@ import com.architter.connection.ConnectionManager;
 import com.example.architter.ArchThisFragment;
 import com.example.architter.IdeaViewFragment;
 import com.example.architter.MyFragment;
-import com.example.architter.R;
+import com.architter.R;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
